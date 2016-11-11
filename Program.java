@@ -17,19 +17,27 @@ public class Program
 		String[] pagos = new String[10];
 		//Delcaracion variables temporales
 		String user, pass;
+		int contador=0;
+		boolean flag=true;
 		//Declaracion metodo de procesos
 		Proceso billy = new Proceso();
 
 		try
 		{
 			//Login
-			user = billy.getInput("Ingresa tu usuario: ");
-			pass = billy.getInput("Ingrese su contraseña: ");
-			if(pass.equals(PASSV) && user.equals(USERV))
-			{
-				billy.print("Has ingresado");
-			}else{
-				billy.print("Intenta de nuevo");
+			while(flag && contador<3){
+				user = billy.getInput("\nIngresa tu usuario: ");
+				pass = billy.getInput("Ingrese su contraseña: ");
+				if(user.equals(USERV) && pass.equals(PASSV))
+				{
+					billy.print("Has ingresado\n");
+					flag=false;
+					System.out.println("hola pablo <3");
+				}else{
+					contador++;
+					billy.print("\nIntenta de nuevo");
+				}
+				
 			}
 		}
 		catch(Exception e)
