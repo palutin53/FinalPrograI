@@ -47,7 +47,7 @@ public class Program
 							case 1:
 									// Administrar Alumnos
 									billy.subMenu();
-									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa tu opcion: "));
+									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
 									switch(subOpcion)
 									{
 										case 1:
