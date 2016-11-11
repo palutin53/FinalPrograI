@@ -40,7 +40,7 @@ public class Program
 					{
 						billy.menuPrin();
 						int opcion = Integer.parseInt(billy.getInput("\n\n\t\tTu Opción: "));
-
+						
 						boolean validsub = true;
 						switch(opcion)
 						{
@@ -137,23 +137,24 @@ public class Program
 							case 5:
 								// Ingreso de Notas
 								billy.print("\n\t\t\t\tIngreso de Notas.");
-								nota1 = Float.parseFloat(getInput("\n\n\tActividad 1:\t\t\t"));
-								nota2 = Float.parseFloat(getInput("\n\tActividad 2:\t\t\t"));
-								nota3 = Float.parseFloat(getInput("\n\tActividad 3:\t\t\t"));
-								nota4 = Float.parseFloat(getInput("\n\tActividad 4:\t\t\t"));
-								nota5 = Float.parseFloat(getInput("\n\tActividad 5:\t\t\t"));
-								nota6 = Float.parseFloat(getInput("\n\tActividad 6:\t\t\t"));
-								parcial = Float.parseFloat(getInput("\n\tExamen Parcial:\t\t\t"));
-								proyecto = Float.parseFloat(getInput("\n\tProyecto:\t\t\t"));
-								examenFinal = Float.parseFloat(getInput("\n\tExamen Final:\t\t\t"));
+								nota1 = Float.parseFloat(billy.getInput("\n\n\tActividad 1:\t\t\t"));
+								nota2 = Float.parseFloat(billy.getInput("\n\tActividad 2:\t\t\t"));
+								nota3 = Float.parseFloat(billy.getInput("\n\tActividad 3:\t\t\t"));
+								nota4 = Float.parseFloat(billy.getInput("\n\tActividad 4:\t\t\t"));
+								nota5 = Float.parseFloat(billy.getInput("\n\tActividad 5:\t\t\t"));
+								nota6 = Float.parseFloat(billy.getInput("\n\tActividad 6:\t\t\t"));
+								parcial = Float.parseFloat(billy.getInput("\n\tExamen Parcial:\t\t\t"));
+								proyecto = Float.parseFloat(billy.getInput("\n\tProyecto:\t\t\t"));
+								examenFinal = Float.parseFloat(billy.getInput("\n\tExamen Final:\t\t\t"));
 							break;
 							case 6:
 								// Resultados Finales
 							break;
 							case 7:
 								// SALIR
-								billy.print("\n\n\t\t\tSaliendo del programa.");
-								valid = false;
+								billy.print("\n\n\t\t\tPresiona enter para salir del programa.");
+								//valid = false;
+								System.out.close();
 							break;
 							default:
 								billy.print("Selección inválida, intentalo de nuevo.");
