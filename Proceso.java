@@ -21,7 +21,7 @@ public class Proceso
 		float[] notas = new float[89];
 		String[] pagos = new String[10];
 	}
-	private static String getInput(String prompt)
+	public static String getInput(String prompt)
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print(prompt);
