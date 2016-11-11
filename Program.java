@@ -20,13 +20,21 @@ public class Program
 		//Declaracion metodo de procesos
 		Proceso billy = new Proceso();
 
-		user = billy.getInput("Ingresa tu usuario: ");
-		pass = billy.getInput("Ingrese su contraseña: ");
-		if(user == USERV && pass == PASSV)
+		try
 		{
-			billy.print("Has ingresado");
-		}else{
-			billy.print("Intenta de nuevo");
+			//Login
+			user = billy.getInput("Ingresa tu usuario: ");
+			pass = billy.getInput("Ingrese su contraseña: ");
+			if(user == USERV && pass == PASSV)
+			{
+				billy.print("Has ingresado");
+			}else{
+				billy.print("Intenta de nuevo");
+			}
+		}
+		catch(Exception e)
+		{
+			print(">>>>>> ERROR PUTO");
 		}
 	}
 }
