@@ -32,7 +32,26 @@ public class Program
 				{
 					billy.print("Has ingresado\n");
 					flag=false;
-					System.out.println("hola pablo <3");
+					//Menu Principal
+					billy.menuPrin();
+					int opcion = getInput("\n\n\t\tTu Opción: ");
+
+					switch()
+					{
+						case 1:
+						break;
+						case 2:
+						break;
+						case 3:
+						break;
+						case 4:
+						break;
+						case 5:
+						break;
+						default:
+						break;
+					}
+
 				}else{
 					contador++;
 					billy.print("\nIntenta de nuevo");
