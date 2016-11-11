@@ -34,9 +34,9 @@ public class Program
 					flag=false;
 					//Menu Principal
 					billy.menuPrin();
-					int opcion = getInput("\n\n\t\tTu Opción: ");
+					int opcion = Integer.parseInt(billy.getInput("\n\n\t\tTu Opción: "));
 
-					switch()
+					switch(opcion)
 					{
 						case 1:
 						break;
