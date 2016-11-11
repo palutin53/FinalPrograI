@@ -25,7 +25,7 @@ public class Program
 			//Login
 			user = billy.getInput("Ingresa tu usuario: ");
 			pass = billy.getInput("Ingrese su contraseña: ");
-			if(user == USERV && pass == PASSV)
+			if(pass.equals(PASSV) && user.equals(USERV))
 			{
 				billy.print("Has ingresado");
 			}else{
@@ -34,7 +34,7 @@ public class Program
 		}
 		catch(Exception e)
 		{
-			print(">>>>>> ERROR PUTO");
+			billy.print(">>>>>> ERROR PUTO");
 		}
 	}
 }
