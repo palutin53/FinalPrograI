@@ -8,6 +8,8 @@ public class Program
 		// Declaracion de variables a utilizar
 		final String PASSV = "udeo", USERV = "admin";
 		String[] alumnos = new String[10];
+		int[] carne = new int[10];
+		int[] idDocentes = new int[5];
 		String[] docentes = new String[5];
 		String[] cursost1 = new String[4]; 
 		String[] cursost2 = new String[4];
@@ -17,9 +19,9 @@ public class Program
 		String[] pagos = new String[10];
 		float nota1 = 0, nota2 = 0, nota3 = 0, nota4 = 0, nota5 = 0, nota6 = 0, parcial = 0, proyecto = 0, examenFinal = 0;
 		//Delcaracion variables temporales
-		String user, pass;
-		int contador = 0;
-		boolean flag = true, valid = true;
+		String user, pass, nombreAlmuno;
+		int contador = 0, numCarne;
+		boolean flag = true, valid = true, salir = true, valSalir;
 		//Declaracion metodo de procesos
 		Proceso billy = new Proceso();
 
@@ -40,7 +42,7 @@ public class Program
 					{
 						billy.menuPrin();
 						int opcion = Integer.parseInt(billy.getInput("\n\n\t\tTu Opción: "));
-						
+
 						boolean validsub = true;
 						switch(opcion)
 						{
@@ -54,12 +56,43 @@ public class Program
 										{
 											case 1:
 												// Agregar
+												try
+												{
+													while(salir)
+													{
+														billy.addAlumno(alumnos, carne);
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 2:
 												// Modificar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 3:
 												// Eliminar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 4:
 												// Volver al menú principal
@@ -83,12 +116,43 @@ public class Program
 										{
 											case 1:
 												// Agregar
+												try
+												{
+													while(salir)
+													{
+														billy.addDocente(docentes, idDocentes);
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 2:
 												// Modificar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 3:
 												// Eliminar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 4:
 												// Volver al menú principal
@@ -112,12 +176,42 @@ public class Program
 										{
 											case 1:
 												// Agregar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 2:
 												// Modificar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 3:
 												// Eliminar
+												try
+												{
+													while(salir)
+													{
+														salir = billy.salir();
+													}
+												}catch(Exception e)
+												{
+													billy.print(">>> Error.");
+												}
 											break;
 											case 4:
 												// Volver al menú principal
@@ -133,6 +227,16 @@ public class Program
 							break;
 							case 4:
 								// Realizar un pago
+								try
+								{
+									while(salir)
+									{
+									salir = billy.salir();
+									}
+								}catch(Exception e)
+								{
+									billy.print(">>> Error.");
+								}
 							break;
 							case 5:
 								// Ingreso de Notas
@@ -172,7 +276,7 @@ public class Program
 		}
 		catch(Exception e)
 		{
-			billy.print(">>>>>> ERROR PUTO");
+			billy.print(">>>>>> ERROR");
 		}
 	}
 }
