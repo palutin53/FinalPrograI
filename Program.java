@@ -121,7 +121,7 @@ public class Program
 													while(salir)
 													{
 														billy.addDocente(docentes, idDocentes);
-														salir = billy.salir();
+														billy.mostrarDocentes(docentes, idDocentes);
 													}
 												}catch(Exception e)
 												{

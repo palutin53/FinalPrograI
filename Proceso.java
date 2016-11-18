@@ -78,24 +78,24 @@ public class Proceso
 	public static void addAlumno(String[] alumnos, int[] carne)
 	{
 		String nombre;
-		int posicion = 0, numCarne = 160402001;
+		int posicion = 0, numCarne = 160402001, validacion = 0;
 		try
 		{
-			for(posicion = 0; posicion<=9; posicion++, numCarne++)
+			if(posicion <= 9)
 			{
-				nombre = getInput("Ingresa el nombre del alumno: ");
-				alumnos[posicion] = nombre;
-				print("El numero de carné de " + nombre + " es: " + numCarne);
-				carne[posicion] = numCarne;
-				for(String s: alumnos)
+				validacion = 0;
+				for(posicion = 0; posicion <= 9; posicion++, numCarne++)
 				{
-					print("\n" + s);
+					nombre = getInput("\n\n\tIngresa el nombre del alumno: ");
+					alumnos[posicion] = nombre;
+					print("El numero de carné de " + nombre + " es: " + numCarne);
+					carne[posicion] = numCarne;
+					
+
 				}
-				print("\n\n");
-				for(int a: carne)
-				{
-					print("\n" + a);
-				}
+			}else if(validacion == 1){
+				print("else if");
+			}else{
 				print("\n\nEl cupo esta lleno, no habrá espacio hasta que algun alumno sea dado de baja.");
 			}
 		}catch(Exception e)
@@ -109,26 +109,36 @@ public class Proceso
 		int posicion = 0, numDocente = 1001;
 		try
 		{
-			for(posicion = 0; posicion<=9; posicion++, numDocente++)
+			if(posicion <= 9)
 			{
-				nombre = getInput("Ingresa el nombre del alumno: ");
-				docentes[posicion] = nombre;
-				print("El numero de carné de " + nombre + " es: " + numDocente);
-				idDocentes[posicion] = numDocente;
-				for(String s: alumnos)
+				for(posicion = 0; posicion<=9; posicion++, numDocente++)
 				{
-					print("\n" + s);
+					nombre = getInput("Ingresa el nombre del alumno: ");
+					docentes[posicion] = nombre;
+					print("El numero de carné de " + nombre + " es: " + numDocente);
+					idDocentes[posicion] = numDocente;
+					salir();
 				}
-				print("\n\n");
-				for(int a: carne)
-				{
-					print("\n" + a);
-				}
+			}else{
 				print("\n\nEl cupo esta lleno, no habrá espacio hasta que algun alumno sea dado de baja.");
 			}
 		}catch(Exception e)
 		{
 			print("\n\n\t>>> Error 111");
+		}
+	}
+	public static void mostrarAlumnos(String[] alumnos, int[] carne)
+	{
+		for(int posicion = 0; posicion <= 9; posicion++)
+		{
+			print("\n\n\t" + alumnos[posicion] + "\t\t" + carne[posicion]);
+		}
+	}
+	public static void mostrarDocentes(String[] docentes, int[] idDocentes)
+	{
+		for(int posicion = 0; posicion <= 9; posicion++)
+		{
+			print("\n\n\t" + docentes[posicion] + "\t\t" + idDocentes[posicion]);
 		}
 	}
 }
