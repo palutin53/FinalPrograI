@@ -79,27 +79,10 @@ public class Proceso
 	{
 		String nombre;
 		int posicion = 0, numCarne = 160402001, validacion = 0;
-		boolean valSalir=true;
+		int j=9;
+		boolean valSalir = true;
 		try
 		{
-			/*if(posicion <= 9)
-			{
-				validacion = 0;
-				for(posicion = 0; posicion <= 9; posicion++, numCarne++)
-				{
-					nombre = getInput("\n\n\tIngresa el nombre del alumno: ");
-					alumnos[posicion] = nombre;
-					print("El numero de carné de " + nombre + " es: " + numCarne);
-					carne[posicion] = numCarne;
-					
-
-				}
-			}else if(validacion == 1){
-				print("else if");
-			}else{
-				print("\n\nEl cupo esta lleno, no habrá espacio hasta que algun alumno sea dado de baja.");
-			}*/
-
 			do{
 				nombre = getInput("\n\n\tIngresa el nombre del alumno: ");
 				alumnos[posicion] = nombre;
@@ -107,15 +90,20 @@ public class Proceso
 				carne[posicion] = numCarne;
 				posicion++;
 				numCarne++;
-				for(String hola:alumnos)
-				{
-					System.out.println("\n"+hola);
+				for(String nuevo:alumnos){
+					System.out.println(nuevo);
 				}
-				valSalir=salir();
+				
+				valSalir = salir();
 
-			}while(posicion<=9 && valSalir);
-
-
+			}while(posicion <= 9 && valSalir);
+			/*while(j>=posicion)
+			{
+				alumnos[j+1] = alumnos[j];
+				j--;
+			}
+			alumnos[posicion] = nombre;
+*/
 		}catch(Exception e)
 		{
 			print("\n\n\t>>> Error 111");
@@ -124,22 +112,23 @@ public class Proceso
 	public static void addDocente(String[] docentes, int[] idDocentes)
 	{
 		String nombre;
-		int posicion = 0, numDocente = 1001;
+		int posicion = 0, numDocente = 160402001;
+		boolean valSalir = true;
 		try
 		{
-			if(posicion <= 9)
-			{
-				for(posicion = 0; posicion<=9; posicion++, numDocente++)
-				{
-					nombre = getInput("Ingresa el nombre del alumno: ");
-					docentes[posicion] = nombre;
-					print("El numero de carné de " + nombre + " es: " + numDocente);
-					idDocentes[posicion] = numDocente;
-					salir();
-				}
-			}else{
-				print("\n\nEl cupo esta lleno, no habrá espacio hasta que algun alumno sea dado de baja.");
-			}
+			do{
+				nombre = getInput("\n\n\tIngresa el nombre del alumno: ");
+				docentes[posicion] = nombre;
+				print("El numero de carne de " +nombre+"es: " + numDocente);				
+				idDocentes[posicion] = numDocente;
+				posicion++;
+				numDocente++;
+				
+				valSalir = salir();
+
+			}while(posicion <= 9 && valSalir);
+
+
 		}catch(Exception e)
 		{
 			print("\n\n\t>>> Error 111");
@@ -149,14 +138,102 @@ public class Proceso
 	{
 		for(int posicion = 0; posicion <= 9; posicion++)
 		{
-			print("\n\n\t" + alumnos[posicion] + "\t\t" + carne[posicion]);
+			print("\n\t" + alumnos[posicion] + "\t\t" + carne[posicion]);
 		}
 	}
 	public static void mostrarDocentes(String[] docentes, int[] idDocentes)
 	{
 		for(int posicion = 0; posicion <= 9; posicion++)
 		{
-			print("\n\n\t" + docentes[posicion] + "\t\t" + idDocentes[posicion]);
+			print("\n\t" + docentes[posicion] + "\t\t" + idDocentes[posicion]);
 		}
 	}
+	public static void eliminarAlumnos(String[] alumnos, int[] carne)
+	{
+		int numCarne = 0, posicion = 0,temp=0;
+		print("\n\tLa lista en este momento se encuentra así:\n\n");
+		mostrarAlumnos(alumnos, carne);
+		numCarne = Integer.parseInt(getInput("\n\n\tIngresa el número de carné del alumno que se dará de baja: "));
+		print("\n\n\tEl alumno a dar de baja es: " + numCarne);
+
+		for(posicion = 0; posicion <= 9; posicion++)
+		{
+			if(numCarne == carne[posicion])
+			{
+				alumnos[posicion] = null;
+				carne[posicion] = 0;
+				temp=posicion+1;
+				break;
+			}
+			
+		}
+
+			System.out.println("aqui esta " +temp);
+		while(temp<9)
+		{
+
+		alumnos[temp - 1] = alumnos[temp];
+		carne[temp-1] = carne[temp];
+        temp = temp + 1;
+		}
+		
+		print("Alumno eliminado de la base de datos.");
+		mostrarAlumnos(alumnos, carne);
+	}
+	public static void eliminarDocentes(String[] docentes, int[] idDocentes)
+	{
+		int numDocente = 0, posicion = 0;
+		print("\n\tLa lista en este momento se encuentra así:\n\n");
+		mostrarDocentes(docentes, idDocentes);
+		numDocente = Integer.parseInt(getInput("\n\n\tIngresa el número de ID del docente que se dará de baja: "));
+		print("\n\n\tEl docente a dar de baja es: " + numDocente);
+
+		for(posicion = 0; posicion <= 9; posicion++)
+		{
+			if(numDocente == idDocentes[posicion])
+			{
+				docentes[posicion] = null;
+				idDocentes[posicion] = 0;
+			}
+		}
+		print("docente eliminado de la base de datos.");
+		mostrarDocentes(docentes, idDocentes);
+	}
+	public static void actualizarAlumnos(String[] alumnos, int[] carne)
+	{
+		int numCarne = 0, posicion = 0;
+		print("\n\tLa lista en este momento se encuentra así:\n\n");
+		mostrarAlumnos(alumnos, carne);
+		numCarne = Integer.parseInt(getInput("\n\n\tIngresa el número de carné del alumno que se actualizará: "));
+		String nuevoNombre = getInput("Ingresa el nuevo nombre para el alumno con carné " + numCarne + ": ");
+
+		for(posicion = 0; posicion <= 9; posicion++)
+		{
+			if(numCarne == carne[posicion])
+			{
+				alumnos[posicion] = nuevoNombre;
+			}
+		}
+		print("Alumno eliminado de la base de datos.");
+		mostrarAlumnos(alumnos, carne);
+	}
+	public static void actualizarDocentes(String[] docentes, int[] idDocentes)
+	{
+		int numDocente = 0, posicion = 0;
+		print("\n\tLa lista en este momento se encuentra así:\n\n");
+		mostrarDocentes(docentes, idDocentes);
+		numDocente = Integer.parseInt(getInput("\n\n\tIngresa el número de ID del docente que se actualizará: "));
+		String nuevoNombre = getInput("Ingresa el nuevo nombre para el docente con ID " + numDocente + ": ");
+
+		for(posicion = 0; posicion <= 9; posicion++)
+		{
+			if(numDocente == idDocentes[posicion])
+			{
+				docentes[posicion] = nuevoNombre;
+			}
+		}
+		print("Alumno " + nuevoNombre + " en la base de datos.");
+		mostrarDocentes(docentes, idDocentes);
+	}
+	// Comit 19 Oct
 }

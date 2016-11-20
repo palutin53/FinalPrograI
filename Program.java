@@ -58,12 +58,7 @@ public class Program
 												// Agregar
 												try
 												{
-													//while(salir)
-													//{
-														billy.addAlumno(alumnos, carne);
-
-														
-													//}
+													billy.addAlumno(alumnos, carne);
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -73,10 +68,7 @@ public class Program
 												// Modificar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													billy.actualizarAlumnos(alumnos, carne);
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -86,10 +78,7 @@ public class Program
 												// Eliminar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													billy.eliminarAlumnos(alumnos, carne);
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -119,11 +108,7 @@ public class Program
 												// Agregar
 												try
 												{
-													while(salir)
-													{
-														billy.addDocente(docentes, idDocentes);
-														billy.mostrarDocentes(docentes, idDocentes);
-													}
+													billy.addDocente(docentes, idDocentes);
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -133,10 +118,7 @@ public class Program
 												// Modificar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													billy.actualizarDocentes(docentes, idDocentes);
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -146,10 +128,7 @@ public class Program
 												// Eliminar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													billy.eliminarDocentes(docentes, idDocentes);
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -179,10 +158,7 @@ public class Program
 												// Agregar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													salir = billy.salir();
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -192,10 +168,7 @@ public class Program
 												// Modificar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													salir = billy.salir();
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -205,10 +178,7 @@ public class Program
 												// Eliminar
 												try
 												{
-													while(salir)
-													{
-														salir = billy.salir();
-													}
+													salir = billy.salir();
 												}catch(Exception e)
 												{
 													billy.print(">>> Error.");
@@ -280,4 +250,5 @@ public class Program
 			billy.print(">>>>>> ERROR");
 		}
 	}
+	// Comit Oct 19
 }
