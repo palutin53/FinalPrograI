@@ -42,6 +42,10 @@ public class Program
 					ArrayList<String> docentes = new ArrayList<String>();
 					ArrayList<Integer> carne = new ArrayList<Integer>();
 					ArrayList<Integer> idDocentes = new ArrayList<Integer>();
+					ArrayList<String> cursos = new ArrayList<String>();
+					ArrayList<Integer> idCursos = new ArrayList<Integer>();
+					ArrayList<Integer> pagos = new ArrayList<Integer>();
+					ArrayList<Integer> idPagos = new ArrayList<Integer>();
 					// Validacion para salida
 					//Menu Principal
 					while(valid)
@@ -182,7 +186,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													salir = billy.salir();
+													billy.addCursos(cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -194,7 +198,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													salir = billy.salir();
+													billy.actualizarCursos(cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -206,7 +210,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													salir = billy.salir();
+													billy.eliminarCursos(cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -231,12 +235,11 @@ public class Program
 								// Realizar un pago
 								try
 								{
-									while(salir)
-									{
-									salir = billy.salir();
-									}
+									billy.linea();
+									billy.addPagos(pagos, idPagos, alumnos, carne);
 								}catch(Exception e)
 								{
+									billy.linea();
 									billy.print("\nError: " + e.getMessage());
 								}
 							break;

@@ -77,6 +77,7 @@ public class Proceso
 		}
 		return valSalir;
 	}
+	// Metodos Agregar
 	public static void addAlumno(ArrayList<String> alumnos, ArrayList<Integer> carne)
 	{
 		String nombre;
@@ -86,7 +87,7 @@ public class Proceso
 		{
 			do{
 				nombre = getInput("\n\n\tIngresa el nombre del alumno: ");
-				print("El numero de carne de " +nombre+"es: " + numCarne);
+				print("\n\t\tEl numero de carne de " + nombre +" es: " + numCarne);
 				alumnos.add(nombre);
 				carne.add(numCarne);
 				posicion++;
@@ -94,7 +95,7 @@ public class Proceso
 				
 				valSalir = salir();
 
-			}while(posicion <= 9 && valSalir);
+			}while(valSalir);
 
 		}catch(Exception e)
 		{
@@ -111,21 +112,101 @@ public class Proceso
 			do{
 				nombre = getInput("\n\n\tIngresa el nombre del alumno: ");
 				docentes.add(nombre);
-				print("El numero de carne de " +nombre+"es: " + numDocente);				
+				print("\n\t\tEl numero de carne de " + nombre +" es: " + numDocente);				
 				idDocentes.add(numDocente);
 				posicion++;
 				numDocente++;
 				
 				valSalir = salir();
 
-			}while(posicion <= 9 && valSalir);
-
+			}while(valSalir);
 
 		}catch(Exception e)
 		{
 			print("\nError: " + e.getMessage());
 		}
 	}
+	public static void addCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	{
+		String nombre;
+		int posicion = 0, numCurso = 01;
+		boolean valSalir = true;
+		try
+		{
+			do{
+				nombre = getInput("\n\n\tIngresa el nombre del nuevo curso: ");
+				cursos.add(nombre);
+				print("\n\t\tEl numero de ID de " + nombre +" es: " + numCurso);				
+				idCursos.add(numCurso);
+				posicion++;
+				numCurso++;
+				
+				valSalir = salir();
+
+			}while(valSalir);
+
+		}catch(Exception e)
+		{
+			print("\nError: " + e.getMessage());
+		}
+	}
+	public static void addPagos(ArrayList<Integer> pagos, ArrayList<Integer> idPagos,  ArrayList<String> alumnos, ArrayList<Integer> carne)
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int pago, posicion = 0, numPago = 0;
+		char opcion = ' ';
+		final int CANTIDADPAGO = 780;
+
+		boolean valSalir = true;
+		try
+		{
+			do
+			{
+				mostrarAlumnos(alumnos, carne);
+				numPago = Integer.parseInt(getInput("\n\n\tIngresa el carné del alumno que realizará el pago: "));
+				int pos = carne.indexOf(numPago);
+				String nombrePago = alumnos.get(pos);
+				print("El alumno que realizará su pago es: " + nombrePago + ".\n¿Confirmar? S/N");
+				opcion = (char)br.read();
+				switch (opcion)
+				{
+					case 's':
+						try{
+							print("\nEl pago del trimestre debe ser de " + CANTIDADPAGO + ".");
+							pagos.add(CANTIDADPAGO);
+							idPagos.add(numPago);
+							print("El pago se ha realizado.");	
+							mostrarPagos(pagos, idPagos, alumnos, carne);						
+						}catch(Exception e){
+							print("\n\t\tERROR: " + e.getMessage());
+						}
+					break;
+					case 'S':
+						try{
+							print("\nEl pago del trimestre debe ser de " + CANTIDADPAGO + ".");
+							pagos.add(CANTIDADPAGO);
+							idPagos.add(numPago);
+							print("El pago se ha realizado.");
+							mostrarPagos(pagos, idPagos, alumnos, carne);
+						}catch(Exception e){
+							print("\n\t\tERROR: " + e.getMessage());
+						}
+					break;
+					case 'n':
+						salir();
+					break;
+					case 'N':
+						salir();
+					break; 
+				}
+				valSalir = salir();
+			}while(valSalir);
+		}catch(Exception e)
+		{
+			print("\nError: " + e.getMessage());
+		}
+	}
+	// Metodos Mostrar
 	public static void mostrarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne)
 	{
 		try
@@ -162,18 +243,51 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
+	public static void mostrarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	{
+		try
+		{
+			print("\n\tNombre\t\t\tID");
+			int pos = cursos.size();
+			int size = pos - 1;
+			for(int i = 0; i <= size; i++)
+			{
+				int numCurso = idCursos.get(i);
+				String curso2 = cursos.get(i);
+				print("\n\t" + curso2 + "\t\t\t" + numCurso);
+			}
+		}catch(Exception e)
+		{
+			print("\nError: " + e.getMessage());
+		}
+	}
+	public static void mostrarPagos(ArrayList<Integer> pagos, ArrayList<Integer> idPagos,  ArrayList<String> alumnos, ArrayList<Integer> carne)
+	{
+		print("\n\tNombre\t\t\tCarné\t\t\tPago");
+		int posA = alumnos.size();
+		int size = posA - 1;
+		for(int i = 0; i <= size; i++)
+		{
+			int numCarne = carne.get(i);
+			String alumno2 = alumnos.get(i);
+			int pago = pagos.get(i);
+			print("\n\t" + alumno2 + "\t\t\t" + numCarne + "\t\t\t" + pago);
+		}
+	}
+	// Metodos Eliminar
 	public static void eliminarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne)
     {
     	try
     	{
 	    	int num, pos, numCarne;
-	    	print("\n\nPor el momento el listado que tenemos está así: ");
-	        mostrarAlumnos(alumnos, carne);
-	        num = Integer.parseInt(getInput("\n\nIngresa el numero de carné del alumno que se dará de baja: "));
-	        pos = carne.indexOf(num);
-	        alumnos.remove(pos);
-	        carne.remove(pos);
-	        print("\n\nEl alumno con el carné " + num + " fué dado de baja.\nLa lista queda así: ");
+			print("\n\nPor el momento el listado que tenemos está así: ");
+			mostrarDocentes(alumnos, carne);
+			num = Integer.parseInt(getInput("\n\nIngresa el carné del alumno que se dará de baja: "));
+			pos = carne.indexOf(num);
+			alumnos.remove(pos);
+			carne.remove(pos);
+
+	        print("\n\tEl alumno se ha dado de baja.\n");
 	        mostrarAlumnos(alumnos, carne);
 		}catch(Exception e)
 		{
@@ -184,7 +298,7 @@ public class Proceso
 	{
 		try
 		{
-			int num, pos, numCarne;
+			int num, pos, numDocente;
 			print("\n\nPor el momento el listado que tenemos está así: ");
 			mostrarDocentes(docentes, idDocentes);
 			num = Integer.parseInt(getInput("\n\nIngresa el ID del docente que se dará de baja: "));
@@ -192,13 +306,33 @@ public class Proceso
 			docentes.remove(pos);
 			idDocentes.remove(pos);
 
-	        print("\n\tAlumno dado de baja.\n");
+	        print("\n\tEl alumno se ha dado de baja.\n");
 	        mostrarDocentes(docentes, idDocentes);
 	    }catch(Exception e)
 	    {
 	    	print("\nError: " + e.getMessage());
 	    }
 	}
+	public static void eliminarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	{
+		try
+		{
+			int num, pos, numCurso;
+			print("\n\nPor el momento el listado que tenemos está así: ");
+			mostrarCursos(cursos, idCursos);
+			num = Integer.parseInt(getInput("\n\nIngresa el ID del curso que se dará de baja: "));
+			pos = idCursos.indexOf(num);
+			cursos.remove(pos);
+			idCursos.remove(pos);
+
+	        print("\n\tEl curso se ha dado de baja.\n");
+	        mostrarCursos(cursos, idCursos);
+	    }catch(Exception e)
+	    {
+	    	print("\nError: " + e.getMessage());
+	    }
+	}
+	// Metodos Actualizar
 	public static void actualizarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne)
 	{
 		try
@@ -239,5 +373,24 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	// Comit 19 Oct
+	public static void actualizarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	{
+		try
+		{
+			int num, pos, numCurso;
+			print("\n\nPor el momento el listado que tenemos está así: ");
+			mostrarCursos(cursos, idCursos);
+			num = Integer.parseInt(getInput("\n\nIngresa el ID del curso que quieres actualizar: "));
+			pos = idCursos.indexOf(num);
+			cursos.remove(pos);
+			String nuevoNombre = getInput("\n\nIngresa el nuevo nombre para el curso: ");
+			cursos.add(pos, nuevoNombre);
+			
+			print("Docente con el ID " + num + " se ha actualizado.");
+			mostrarCursos(cursos, idCursos);
+		}catch(Exception e)
+		{
+			print("\nError: " + e.getMessage());
+		}
+	}
 }
