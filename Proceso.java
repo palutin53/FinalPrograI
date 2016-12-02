@@ -88,11 +88,13 @@ public class Proceso
 		return valSalir;
 	}
 	// Metodos Agregar
-	public static int addAlumno(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre)
+	public static int addAlumno(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> nota1, ArrayList<Float> nota2, ArrayList<Float> nota3, ArrayList<Float> nota4, ArrayList<Float> nota5, ArrayList<Float> nota6, ArrayList<Float> parcial, ArrayList<Float> proyecto, ArrayList<Float> examenFinal)
 	{
 		String nombre;
 		int posicion = 0;
 		boolean valSalir = true;
+		int iniciar = 0;
+		float inicio = (float) iniciar;
 		try
 		{
 			do{
@@ -102,6 +104,15 @@ public class Proceso
 				carne.add(numCarne);
 				pagos.add(0);
 				trimestre.add(0);
+				nota1.add(inicio);
+				nota2.add(inicio);
+				nota3.add(inicio);
+				nota4.add(inicio);
+				nota5.add(inicio);
+				nota6.add(inicio);
+				parcial.add(inicio);
+				proyecto.add(inicio);
+				examenFinal.add(inicio);
 				posicion++;
 				numCarne = numCarne + 1;
 				
@@ -223,15 +234,53 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
+	public static void addNotas(ArrayList<Float> nota1, ArrayList<Float> nota2, ArrayList<Float> nota3, ArrayList<Float> nota4, ArrayList<Float> nota5, ArrayList<Float> nota6, ArrayList<Float> parcial, ArrayList<Float> proyecto, ArrayList<Float> examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne)
+	{
+		boolean valSalir = true;
+		float n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0, n6 = 0, par = 0, pro = 0, exF = 0;
+		try
+		{
+			do
+			{
+				mostrarAlumnos(alumnos, carne);
+				int numCarne = Integer.parseInt(getInput("\nIngresa el numero de Carné del alumno que se calificará: "));
+				int pos = carne.indexOf(numCarne);
+
+				if(nota1.get(pos) > 0 && nota2.get(pos) > 0 && nota3.get(pos) > 0 && nota4.get(pos) > 0 && nota5.get(pos) > 0 && nota6.get(pos) > 0 && parcial.get(pos) > 0 && proyecto.get(pos) > 0 && examenFinal.get(pos) > 0)
+				{
+					print("\n\t\t\tEl alumno ya ha sido calificado.");
+				}else
+				{
+
+					n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1: "));
+					nota1.add(pos, n1);
+					if(nota1 <= 5)
+					{
+						n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2: "));
+						nota2.add(pos, n2);
+						if(nota2 <= 5)
+						{
+							
+						}else{	}
+					}else{
+
+					}
+				}
+				valSalir = salir();
+			}while(valSalir);
+		}catch(Exception e)
+		{
+			print("ERROR: " + e.getMessage());
+		}
+	}
 	// Metodos Mostrar
 	public static void mostrarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne)
 	{
 		try
 		{
 			print("\n\tNombre\t\t\tCarné");
-			int pos = alumnos.size();
-			int size = pos - 1;
-			for(int i = 0; i <= size; i++)
+			int size = alumnos.size();
+			for(int i = 0; i < size; i++)
 			{
 				int numCarne = carne.get(i);
 				String alumno2 = alumnos.get(i);
@@ -247,9 +296,8 @@ public class Proceso
 		try
 		{
 			print("\n\tNombre\t\t\tID");
-			int pos = docentes.size();
-			int size = pos - 1;
-			for(int i = 0; i <= size; i++)
+			int size = docentes.size();
+			for(int i = 0; i < size; i++)
 			{
 				int numID = idDocentes.get(i);
 				String docente = docentes.get(i);
@@ -265,9 +313,8 @@ public class Proceso
 		try
 		{
 			print("\n\tNombre\t\t\tID");
-			int pos = cursos.size();
-			int size = pos - 1;
-			for(int i = 0; i <= size; i++)
+			int size = cursos.size();
+			for(int i = 0; i < size; i++)
 			{
 				int numCurso = idCursos.get(i);
 				String curso2 = cursos.get(i);
@@ -283,14 +330,14 @@ public class Proceso
 		boolean valSalir = true;
 		try
 		{
-			print("\n\tNombre\t\t\tCarné\t\t\tTrimestre");
+			print("\n\tNombre\t\t\tCarné\t\t\t\tTrimestre");
 			int pos = pagos.size();
-			int size = pos - 1;	
-				for(int i = 0; i <= size; i++)
+			int size = pos;
+				for(int i = 0; i < size; i++)
 				{
 					String nombre = alumnos.get(i);
 					int numCarne = carne.get(i);
-					int trim = carne.get(i);
+					int trim = trimestre.get(i);
 
 					if(trim == 0)
 					{

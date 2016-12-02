@@ -12,7 +12,6 @@ public class Program
 			Proceso billy = new Proceso();
 		// Declaracion de variables a utilizar
 			final String PASSV = "udeo", USERV = "admin";
-			float nota1 = 0, nota2 = 0, nota3 = 0, nota4 = 0, nota5 = 0, nota6 = 0, parcial = 0, proyecto = 0, examenFinal = 0;
 		//Delcaracion variables temporales
 			String user, pass, nombreAlmuno;
 			int contador = 0, numCarne = 160402001;
@@ -46,6 +45,15 @@ public class Program
 					ArrayList<Integer> idCursos = new ArrayList<Integer>();
 					ArrayList<Integer> pagos = new ArrayList<Integer>();
 					ArrayList<Integer> trimestre = new ArrayList<Integer>();
+					ArrayList<Float> nota1 = new ArrayList<Float>();
+					ArrayList<Float> nota2 = new ArrayList<Float>();
+					ArrayList<Float> nota3 = new ArrayList<Float>();
+					ArrayList<Float> nota4 = new ArrayList<Float>();
+					ArrayList<Float> nota5 = new ArrayList<Float>();
+					ArrayList<Float> nota6 = new ArrayList<Float>();
+					ArrayList<Float> parcial = new ArrayList<Float>();
+					ArrayList<Float> proyecto = new ArrayList<Float>();
+					ArrayList<Float> examenFinal = new ArrayList<Float>();
 					// Validacion para salida
 					//Menu Principal
 					while(valid)
@@ -70,7 +78,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													numCarne = billy.addAlumno(alumnos, carne, numCarne, pagos, trimestre);
+													numCarne = billy.addAlumno(alumnos, carne, numCarne, pagos, trimestre, nota1, nota2, nota3, nota4, nota5, nota6, parcial, proyecto, examenFinal);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -283,16 +291,8 @@ public class Program
 							break;
 							case 5:
 								// Ingreso de Notas
-								billy.print("\n\t\t\t\tIngreso de Notas.");
-								nota1 = Float.parseFloat(billy.getInput("\n\n\tActividad 1:\t\t\t"));
-								nota2 = Float.parseFloat(billy.getInput("\n\tActividad 2:\t\t\t"));
-								nota3 = Float.parseFloat(billy.getInput("\n\tActividad 3:\t\t\t"));
-								nota4 = Float.parseFloat(billy.getInput("\n\tActividad 4:\t\t\t"));
-								nota5 = Float.parseFloat(billy.getInput("\n\tActividad 5:\t\t\t"));
-								nota6 = Float.parseFloat(billy.getInput("\n\tActividad 6:\t\t\t"));
-								parcial = Float.parseFloat(billy.getInput("\n\tExamen Parcial:\t\t\t"));
-								proyecto = Float.parseFloat(billy.getInput("\n\tProyecto:\t\t\t"));
-								examenFinal = Float.parseFloat(billy.getInput("\n\tExamen Final:\t\t\t"));
+								billy.linea();
+								billy.addNotas(nota1, nota2, nota3, nota4, nota5, nota6, parcial, proyecto, examenFinal, alumnos, carne);				
 							break;
 							case 6:
 								// Resultados Finales
