@@ -49,6 +49,16 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
+	public static void subMenuPagos()
+	{
+		try{
+			print("\n\t\t\tAdministrar Pagos");
+			print("\n\n\tIngresa el valor según la opción que selecciones.");
+			print("\n\n\t\t1.- Realizar Pago\n\t\t2.- Mostrar Pagos\n\t\t3.- VOLVER");
+		}catch(Exception e){
+			print("\nError: " + e.getMessage());
+		}
+	}
 	public static void linea()
 	{
 		try{
@@ -78,10 +88,10 @@ public class Proceso
 		return valSalir;
 	}
 	// Metodos Agregar
-	public static void addAlumno(ArrayList<String> alumnos, ArrayList<Integer> carne)
+	public static int addAlumno(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre)
 	{
 		String nombre;
-		int posicion = 0, numCarne = 160402001;
+		int posicion = 0;
 		boolean valSalir = true;
 		try
 		{
@@ -90,8 +100,10 @@ public class Proceso
 				print("\n\t\tEl numero de carne de " + nombre +" es: " + numCarne);
 				alumnos.add(nombre);
 				carne.add(numCarne);
+				pagos.add(0);
+				trimestre.add(0);
 				posicion++;
-				numCarne++;
+				numCarne = numCarne + 1;
 				
 				valSalir = salir();
 
@@ -101,6 +113,7 @@ public class Proceso
 		{
 			print("\nError: " + e.getMessage());
 		}
+		return numCarne;
 	}
 	public static void addDocente(ArrayList<String> docentes, ArrayList<Integer> idDocentes)
 	{
@@ -150,55 +163,59 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void addPagos(ArrayList<Integer> pagos, ArrayList<Integer> idPagos,  ArrayList<String> alumnos, ArrayList<Integer> carne)
+	public static void addPagos(ArrayList<Integer> pagos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> trimestre)
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int pago, posicion = 0, numPago = 0;
-		char opcion = ' ';
-		final int CANTIDADPAGO = 780;
-
 		boolean valSalir = true;
+		int pago, posicion = 0, numPago = 0;
+		final int CANTIDADPAGO = 780;
+		char opcion = ' ';
 		try
-		{
+		{		
 			do
 			{
 				mostrarAlumnos(alumnos, carne);
 				numPago = Integer.parseInt(getInput("\n\n\tIngresa el carné del alumno que realizará el pago: "));
 				int pos = carne.indexOf(numPago);
 				String nombrePago = alumnos.get(pos);
-				print("El alumno que realizará su pago es: " + nombrePago + ".\n¿Confirmar? S/N");
-				opcion = (char)br.read();
-				switch (opcion)
-				{
-					case 's':
-						try{
-							print("\nEl pago del trimestre debe ser de " + CANTIDADPAGO + ".");
-							pagos.add(CANTIDADPAGO);
-							idPagos.add(numPago);
-							print("El pago se ha realizado.");	
-							mostrarPagos(pagos, idPagos, alumnos, carne);						
-						}catch(Exception e){
-							print("\n\t\tERROR: " + e.getMessage());
+
+
+				print("\n\tEl pago del trimestre debe ser de " + CANTIDADPAGO + ".");
+
+						int posicionTrimestre = trimestre.get(pos);
+						if(posicionTrimestre == 0)
+						{
+							trimestre.remove(pos);
+							trimestre.add(pos, 1);
+							pagos.add(pos, CANTIDADPAGO);
+							print("\n\t\tSe ha realizado el pago de el trimestre\n\t\t\tEnero - Marzo\n\t\tExitosamente.");
+						}else if(posicionTrimestre == 1)
+						{
+							trimestre.remove(pos);
+							trimestre.add(pos, 2);
+							pagos.add(pos, CANTIDADPAGO);
+							print("\n\t\tSe ha realizado el pago de el trimestre\n\t\t\tAbril - Junio\n\t\tExitosamente.");
+
+						}else if(posicionTrimestre == 2)
+						{
+							trimestre.remove(pos);
+							trimestre.add(pos, 3);
+							pagos.add(pos, CANTIDADPAGO);
+							print("\n\t\tSe ha realizado el pago de el trimestre\n\t\t\tJulio - Septiembre\n\t\tExitosamente.");
+
+						}else if(posicionTrimestre == 3)
+						{
+							trimestre.remove(pos);
+							trimestre.add(pos, 4);
+							pagos.add(pos, CANTIDADPAGO);
+							print("\n\t\tSe ha realizado el pago de el trimestre\n\t\t\tOctubre - Diciembre\n\t\tExitosamente.");
+						}else if(posicionTrimestre == 4)
+						{
+							print("\n\t\tEl alumno ya ha realizado todos sus pagos.");
 						}
-					break;
-					case 'S':
-						try{
-							print("\nEl pago del trimestre debe ser de " + CANTIDADPAGO + ".");
-							pagos.add(CANTIDADPAGO);
-							idPagos.add(numPago);
-							print("El pago se ha realizado.");
-							mostrarPagos(pagos, idPagos, alumnos, carne);
-						}catch(Exception e){
-							print("\n\t\tERROR: " + e.getMessage());
-						}
-					break;
-					case 'n':
-						salir();
-					break;
-					case 'N':
-						salir();
-					break; 
-				}
+					
+				//mostrarPagos(pagos, idPagos, alumnos, carne);
+				
 				valSalir = salir();
 			}while(valSalir);
 		}catch(Exception e)
@@ -261,17 +278,40 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void mostrarPagos(ArrayList<Integer> pagos, ArrayList<Integer> idPagos,  ArrayList<String> alumnos, ArrayList<Integer> carne)
+	public static void mostrarPagos(ArrayList<Integer> pagos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> trimestre)
 	{
-		print("\n\tNombre\t\t\tCarné\t\t\tPago");
-		int posA = alumnos.size();
-		int size = posA - 1;
-		for(int i = 0; i <= size; i++)
+		boolean valSalir = true;
+		try
 		{
-			int numCarne = carne.get(i);
-			String alumno2 = alumnos.get(i);
-			int pago = pagos.get(i);
-			print("\n\t" + alumno2 + "\t\t\t" + numCarne + "\t\t\t" + pago);
+			print("\n\tNombre\t\t\tCarné\t\t\tTrimestre");
+			int pos = pagos.size();
+			int size = pos - 1;	
+				for(int i = 0; i <= size; i++)
+				{
+					String nombre = alumnos.get(i);
+					int numCarne = carne.get(i);
+					int trim = carne.get(i);
+
+					if(trim == 0)
+					{
+						print("\n\t" + nombre + "\t\t\t" + numCarne + "\t\t\t" + "SIN PAGO");
+					}else if(trim == 1)
+					{
+						print("\n\t" + nombre + "\t\t\t" + numCarne + "\t\t\t" + "Enero - Marzo");
+					}else if(trim == 2)
+					{
+						print("\n\t" + nombre + "\t\t\t" + numCarne + "\t\t\t" + "Abril - Junio");
+					}else if(trim == 3)
+					{
+						print("\n\t" + nombre + "\t\t\t" + numCarne + "\t\t\t" + "Julio - Septiembre");
+					}else if (trim == 4)
+					{
+						print("\n\t" + nombre + "\t\t\t" + numCarne + "\t\t\t" + "Octubre - Diciembre");
+					}
+				}
+		}catch(Exception e)
+		{
+			print("\nError: " + e.getMessage());
 		}
 	}
 	// Metodos Eliminar

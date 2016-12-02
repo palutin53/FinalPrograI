@@ -15,7 +15,7 @@ public class Program
 			float nota1 = 0, nota2 = 0, nota3 = 0, nota4 = 0, nota5 = 0, nota6 = 0, parcial = 0, proyecto = 0, examenFinal = 0;
 		//Delcaracion variables temporales
 			String user, pass, nombreAlmuno;
-			int contador = 0, numCarne;
+			int contador = 0, numCarne = 160402001;
 			boolean flag = true, valid = true, salir = true, valSalir;			
 		try
 		{
@@ -45,7 +45,7 @@ public class Program
 					ArrayList<String> cursos = new ArrayList<String>();
 					ArrayList<Integer> idCursos = new ArrayList<Integer>();
 					ArrayList<Integer> pagos = new ArrayList<Integer>();
-					ArrayList<Integer> idPagos = new ArrayList<Integer>();
+					ArrayList<Integer> trimestre = new ArrayList<Integer>();
 					// Validacion para salida
 					//Menu Principal
 					while(valid)
@@ -70,7 +70,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.addAlumno(alumnos, carne);
+													numCarne = billy.addAlumno(alumnos, carne, numCarne, pagos, trimestre);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -174,74 +174,112 @@ public class Program
 									}
 							break;
 							case 3:
-								while(validsub)
+								do
+								{
+									// Administrar Cursos
+									billy.subMenu();
+									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
+									switch(subOpcion)
 									{
-										// Administrar Cursos
-										billy.subMenu();
-										int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
-										switch(subOpcion)
-										{
-											case 1:
-												// Agregar
-												try
-												{
-													billy.linea();
-													billy.addCursos(cursos, idCursos);
-												}catch(Exception e)
-												{
-													billy.linea();
-													billy.print("\nError: " + e.getMessage());
-												}
-											break;
-											case 2:
-												// Modificar
-												try
-												{
-													billy.linea();
-													billy.actualizarCursos(cursos, idCursos);
-												}catch(Exception e)
-												{
-													billy.linea();
-													billy.print("\nError: " + e.getMessage());
-												}
-											break;
-											case 3:
-												// Eliminar
-												try
-												{
-													billy.linea();
-													billy.eliminarCursos(cursos, idCursos);
-												}catch(Exception e)
-												{
-													billy.linea();
-													billy.print("\nError: " + e.getMessage());
-												}
-											break;
-											case 4:
+										case 1:
+											// Agregar
+											try
+											{
+												billy.linea();
+												billy.addCursos(cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 2:
+											// Modificar
+											try
+											{
+											billy.linea();
+												billy.actualizarCursos(cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 3:
+											// Eliminar
+											try
+											{
+												billy.linea();
+												billy.eliminarCursos(cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 4:
+											// Volver al menú principal
+											billy.linea();
+											billy.print("volviendo al menú princial...");
+											validsub = false;
+										break;
+										default:
+											billy.linea();
+											billy.print("Selección inválida, intentalo de nuevo.");
+											validsub = true;
+										break;
+									}
+								}while(validsub);
+							break;
+							// PAGOS
+							case 4:
+								do
+								{
+									billy.linea();
+									billy.subMenuPagos();
+									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
+									switch(subOpcion)
+									{
+										case 1:
+											// Realizar un pago
+											try
+											{
+												billy.linea();
+												billy.addPagos(pagos, alumnos, carne, trimestre);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 2:
+											try
+											{
+												billy.mostrarPagos(pagos, alumnos, carne, trimestre);
+											}catch(Exception e)
+											{
+												billy.print("ERROR: " + e.getMessage());
+											}
+										break;
+										case 3:
+											try
+											{
 												// Volver al menú principal
 												billy.linea();
 												billy.print("volviendo al menú princial...");
 												validsub = false;
-											break;
-											default:
-												billy.linea();
-												billy.print("Selección inválida, intentalo de nuevo.");
-												validsub = true;
-											break;
-										}
+											}catch(Exception e)
+											{
+												billy.print("\n\tError: " + e.getMessage());
+											}
+										break;
+										default:
+											billy.linea();
+											billy.print("Selección inválida, intentalo de nuevo.");
+											validsub = true;
+										break;
 									}
-							break;
-							case 4:
-								// Realizar un pago
-								try
-								{
-									billy.linea();
-									billy.addPagos(pagos, idPagos, alumnos, carne);
-								}catch(Exception e)
-								{
-									billy.linea();
-									billy.print("\nError: " + e.getMessage());
-								}
+								}while(validsub);
 							break;
 							case 5:
 								// Ingreso de Notas
