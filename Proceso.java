@@ -252,19 +252,52 @@ public class Proceso
 				}else
 				{
 
-					n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1: "));
+					n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
 					nota1.add(pos, n1);
-					if(nota1 <= 5)
+					if(n1 <= 5)
 					{
-						n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2: "));
+						n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
 						nota2.add(pos, n2);
-						if(nota2 <= 5)
+						if(n2 <= 5)
 						{
-							
-						}else{	}
-					}else{
-
-					}
+							n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
+							nota3.add(pos, n3);
+							if(n3 <= 5)
+							{
+								n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
+								nota4.add(pos, n4);
+								if(n4 <= 5)
+								{
+									n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
+									nota5.add(pos, n5);
+									if(n5 <= 5)
+									{
+										n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
+										nota6.add(pos, n6);
+										if(n6 <= 5)
+										{
+											par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
+											parcial.add(pos, par);
+											if(par <= 10)
+											{
+												pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
+												proyecto.add(pos, pro);
+												if(pro <= 20)
+												{
+													exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
+													examenFinal.add(pos, exF);
+													if(exF <= 40)
+													{
+														print("\n\t\tSe han ingresado las notas correntamente.");
+													}else{	print("La nota excede el rango establecido");	}
+												}else{	print("La nota excede el rango establecido");	}
+											}else{	print("La nota excede el rango establecido");	}
+										}else{	print("La nota excede el rango establecido");	}
+									}else{	print("La nota excede el rango establecido");	}
+								}else{	print("La nota excede el rango establecido");	}
+							}else{	print("La nota excede el rango establecido");	}
+						}else{	print("La nota excede el rango establecido");	}
+					}else{	print("La nota excede el rango establecido");	}
 				}
 				valSalir = salir();
 			}while(valSalir);
@@ -359,6 +392,22 @@ public class Proceso
 		}catch(Exception e)
 		{
 			print("\nError: " + e.getMessage());
+		}
+	}
+	public static void mostrarFinales(ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Float> nota1, ArrayList<Float> nota2, ArrayList<Float> nota3, ArrayList<Float> nota4, ArrayList<Float> nota5, ArrayList<Float> nota6, ArrayList<Float> parcial, ArrayList<Float> proyecto, ArrayList<Float> examenFinal)
+	{
+		boolean valSalir = true;
+		try
+		{
+			do
+			{
+
+
+				valSalir = salir();
+			}while(valSalir)
+		}catch(Exception e)
+		{
+			print("ERROR: " + e.getMessage());
 		}
 	}
 	// Metodos Eliminar
@@ -479,5 +528,10 @@ public class Proceso
 		{
 			print("\nError: " + e.getMessage());
 		}
+	}
+	// Metodos para Asignar
+	public static void asignarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<String> docentes, ArrayList<Integer> idDocentes)
+	{
+
 	}
 }
