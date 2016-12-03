@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.io.Console;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.io.FileWriter;
 
 public class Proceso
 {
@@ -63,6 +64,16 @@ public class Proceso
 			print("\n\t\t\tAdministrar");
 			print("\n\n\tIngresa el valor según la opción que selecciones.");
 			print("\n\n\t\t1.- Agregar\n\t\t2.- Editar\n\t\t3.- Eliminar\n\t\t4.- Asignar Alumnos\n\t\t5.- VOLVER");
+		}catch(Exception e){
+			print("\nError: " + e.getMessage());
+		}
+	}
+	public static void subMenuLogs()
+	{
+		try{
+			print("\n\t\t\tLogs");
+			print("\n\n\tIngresa el valor según la opción que selecciones.");
+			print("\n\n\t\t1.- Visualizar Logs\n\t\t2.- Importar a text\n\t\t3.- VOLVER");
 		}catch(Exception e){
 			print("\nError: " + e.getMessage());
 		}
@@ -739,38 +750,6 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void mostrarFinales(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Float> finalesCurso1, ArrayList<Float> finalesCurso2, ArrayList<Float> finalesCurso3, ArrayList<Float> finalesCurso4)
-	{
-		boolean valSalir = true;
-		try
-		{
-			String nombreCurso = null;
-			int contadorGanados = 0, contadorPerdidos = 0, nota = 0;
-			do
-			{
-				print("\n\t\tResultados por curso: ");
-				print("\n\tCurso\t\t\tGanados\t\t\tPerdidos");
-
-				for(int i = 0; i <= alumnos.size(); i++)
-				{
-					if(nota <= 60)
-					{
-						print("\n\t" + nombreCurso + "\t\t\t" + contadorGanados + "\t\t\t" + contadorPerdidos);
-						contadorPerdidos = contadorPerdidos + 1;
-					}else
-					{
-						contadorPerdidos = contadorPerdidos + 1;
-						print("\n\t" + nombreCurso + "\t\t\t" + contadorGanados + "\t\t\t" + contadorPerdidos);
-					}
-				}
-
-				valSalir = salir();
-			}while(valSalir);
-		}catch(Exception e)
-		{
-			print("ERROR: " + e.getMessage());
-		}
-	}
 	// Metodos Eliminar
 	public static void eliminarAlumnos(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
     {
@@ -1109,9 +1088,18 @@ public class Proceso
 
 	public static void historialMostrar(ArrayList<String> histo)
 	{
+		print("\n\t\t\tHistorial de Movimientos:");
 		for(int i=0; i< histo.size(); i++)
 		{
-			System.out.println(histo.get(i));
+			print("\n\t\t" + histo.get(i));
 		}
 	}
+	public static void exportarTextoLogs(ArrayList<String> histo){
+        try(FileWriter fw = new FileWriter("HistorialLogs.txt")){
+           // fw.write(historialMostrar(histo));
+            System.out.println("Archivo HistorialLogs.txt creado!");
+        }catch(Exception e){
+            System.out.println("Se encontro el siguiente error: \n" + e.toString());
+        }
+    }
 }

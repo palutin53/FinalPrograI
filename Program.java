@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.io.Console;
+import java.io.FileWriter;
 
 public class Program
 {
@@ -21,16 +22,8 @@ public class Program
 			//Login
 			do
 			{
-				// Esconder password
-				Console cnsl = null;
-				cnsl = System.console();
-
 				user = billy.getInput("\nUsuario: ");
-				billy.print("password: ");
-
-	        	char[] passwordChars = cnsl.readPassword();
-        		String passwordString = new String(passwordChars);
-        		pass = passwordString;
+				pass = billy.getInput("password: ");
 
 				if(user.equals(USERV) && pass.equals(PASSV))
 				{
@@ -94,10 +87,10 @@ public class Program
 					ArrayList<Integer> alumnoCurso3 = new ArrayList<Integer>();
 					ArrayList<Integer> alumnoCurso4 = new ArrayList<Integer>();
 
-					ArrayList<Float> finalesCurso1 = new ArrayList<Integer>();
-					ArrayList<Float> finalesCurso2 = new ArrayList<Integer>();
-					ArrayList<Float> finalesCurso3 = new ArrayList<Integer>();
-					ArrayList<Float> finalesCurso4 = new ArrayList<Integer>();
+					ArrayList<Float> finalesCurso1 = new ArrayList<Float>();
+					ArrayList<Float> finalesCurso2 = new ArrayList<Float>();
+					ArrayList<Float> finalesCurso3 = new ArrayList<Float>();
+					ArrayList<Float> finalesCurso4 = new ArrayList<Float>();
  
  					// Validacion para salida
 					//Menu Principal
@@ -123,7 +116,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													numCarne = billy.addAlumno(USERV,histor,alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
+													numCarne = billy.addAlumno(USERV,histor,alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, finalesCurso1, finalesCurso2, finalesCurso3, finalesCurso4);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -361,16 +354,47 @@ public class Program
 								}
 							break;
 							case 7:
-								try
+								// LOGS
+								billy.subMenuLogs();
+								int opcionLog = Integer.parseInt(billy.getInput("\n\t\tOpcion: "));
+								switch(opcionLog)
 								{
-									billy.linea();
-									billy.historialMostrar(histor);
-								}catch(Exception e)
-								{
-									billy.linea();
-									billy.print("\n\tERROR: " + e.getMessage());
-								}
-								
+									case 1:
+										// Visualizar logs
+										try
+										{
+											billy.linea();
+											billy.historialMostrar(histor);
+										}catch(Exception e)
+										{
+											billy.linea();
+											billy.print("\n\tERROR: " + e.getMessage());
+										}
+									break;
+									case 2:
+										// Exportat a texto
+										try
+										{
+											billy.linea();
+											billy.exportarTextoLogs(histor);
+										}catch(Exception e)
+										{
+											billy.linea();
+											billy.print("\n\tERROR: " + e.getMessage());
+										}
+									break;
+									case 3:
+									// Volver al menú principal
+										billy.linea();
+										billy.print("volviendo al menú princial...");
+										validsub = false;
+									break;
+									default:
+										billy.linea();
+										billy.print("Selección inválida, intentalo de nuevo.");
+										validsub = true;
+									break;
+								}						
 							break;
 							case 8:
 								// SALIR
