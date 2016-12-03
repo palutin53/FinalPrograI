@@ -42,7 +42,7 @@ public class Proceso
 		{
 			print("\n\t\t\tBinenvenido a UDEO");
 			print("\n\n\tIngresa el valor según la opcion que selecciones.");
-			print("\n\n\t\t1.- Administrar Alumnos\n\t\t2.- Administrar Docentes\n\t\t3.- Administrar Cursos\n\t\t4.- Realizar Pago\n\t\t5.- Ingresar Notas\n\t\t6.- Ver Resultados Finales.\n\t\t7.- SALIR");
+			print("\n\n\t\t1.- Administrar Alumnos\n\t\t2.- Administrar Docentes\n\t\t3.- Administrar Cursos\n\t\t4.- Realizar Pago\n\t\t5.- Ingresar Notas\n\t\t6.- Ver Resultados Finales.\n\t\t7.- Mostrar Historial\n\t\t8.- Salir");
 		}catch(Exception e){
 			print("\nError: " + e.getMessage());
 		}

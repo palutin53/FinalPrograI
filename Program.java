@@ -344,7 +344,7 @@ public class Program
 								billy.addNotas(USERV,histor,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);				
 							break;
 							case 6:
-								billy.historialMostrar(histor);
+								
 								// Resultados Finales
 								try
 								{
@@ -355,6 +355,16 @@ public class Program
 								}
 							break;
 							case 7:
+								try
+								{
+									billy.historialMostrar(histor);
+								}catch(Exception e)
+								{
+									billy.print("\n\tERROR: " + e.getMessage());
+								}
+								
+							break;
+							case 8:
 								// SALIR
 								billy.print("\n\n\t\t\tPresiona enter para salir del programa.");
 								//valid = false;
