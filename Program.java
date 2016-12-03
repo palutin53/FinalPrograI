@@ -1,41 +1,98 @@
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.io.Console;
 
 public class Program
 {
 	public static void main(String[] args)
 	{
+		//Instanciando metodo de procesos
+			Proceso billy = new Proceso();
 		// Declaracion de variables a utilizar
-		final String PASSV = "udeo", USERV = "admin";
-		String[] alumnos = new String[10];
-		int[] carne = new int[10];
-		int[] idDocentes = new int[5];
-		String[] docentes = new String[5];
-		String[] cursost1 = new String[4]; 
-		String[] cursost2 = new String[4];
-		String[] cursost3 = new String[4];
-		String[] cursost4 = new String[4];
-		float[] notas = new float[89];
-		String[] pagos = new String[10];
-		float nota1 = 0, nota2 = 0, nota3 = 0, nota4 = 0, nota5 = 0, nota6 = 0, parcial = 0, proyecto = 0, examenFinal = 0;
+			final String PASSV = "udeo", USERV = "admin";
 		//Delcaracion variables temporales
-		String user, pass, nombreAlmuno;
-		int contador = 0, numCarne;
-		boolean flag = true, valid = true, salir = true, valSalir;
-		//Declaracion metodo de procesos
-		Proceso billy = new Proceso();
-
+			String user, pass, nombreAlmuno;
+			int contador = 0, numCarne = 160402001;
+			boolean flag = true, valid = true, salir = true, valSalir;			
 		try
 		{
 			//Login
-			while(flag && contador<3)
+			do
 			{
-				user = billy.getInput("\nIngresa tu usuario: ");
-				pass = billy.getInput("Ingrese su contraseña: ");
+				// Esconder password
+				Console cnsl = null;
+				cnsl = System.console();
+
+				user = billy.getInput("\nUsuario: ");
+				billy.print("password: ");
+
+	        	char[] passwordChars = cnsl.readPassword();
+        		String passwordString = new String(passwordChars);
+        		pass = passwordString;
+
 				if(user.equals(USERV) && pass.equals(PASSV))
 				{
 					billy.print("¡Bienvenido!\n");
 					flag = false;
+					// ArrayList
+					ArrayList<String> alumnos = new ArrayList<String>();
+					ArrayList<String> docentes = new ArrayList<String>();
+					ArrayList<Integer> carne = new ArrayList<Integer>();
+					ArrayList<Integer> idDocentes = new ArrayList<Integer>();
+					ArrayList<String> cursos = new ArrayList<String>();
+					ArrayList<Integer> idCursos = new ArrayList<Integer>();
+					ArrayList<Integer> pagos = new ArrayList<Integer>();
+					ArrayList<Integer> trimestre = new ArrayList<Integer>();
+					ArrayList<String> histor = new ArrayList<String>();
+
+					ArrayList<Float> curso1nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso1parcial = new ArrayList<Float>();
+					ArrayList<Float> curso1proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso1examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso2nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso2parcial = new ArrayList<Float>();
+					ArrayList<Float> curso2proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso2examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso3nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso3parcial = new ArrayList<Float>();
+					ArrayList<Float> curso3proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso3examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso4nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso4parcial = new ArrayList<Float>();
+					ArrayList<Float> curso4proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso4examenFinal = new ArrayList<Float>();
+
+					ArrayList<Integer> alumnoCurso = new ArrayList<Integer>();
+					ArrayList<Integer> docenteCurso = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso1 = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso2 = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso3 = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso4 = new ArrayList<Integer>();
 					// Validacion para salida
 					//Menu Principal
 					while(valid)
@@ -50,6 +107,7 @@ public class Program
 									while(validsub)
 									{
 										// Administrar Alumnos
+										billy.linea();
 										billy.subMenu();
 										int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
 										switch(subOpcion)
@@ -58,38 +116,46 @@ public class Program
 												// Agregar
 												try
 												{
-													billy.addAlumno(alumnos, carne);
+													billy.linea();
+													numCarne = billy.addAlumno(USERV,histor,alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
 												}catch(Exception e)
 												{
-													billy.print(">>> Error.");
+													billy.linea();
+													billy.print("\nError: " + e.getMessage());
 												}
 											break;
 											case 2:
 												// Modificar
 												try
 												{
-													billy.actualizarAlumnos(alumnos, carne);
+													billy.linea();
+													billy.actualizarAlumnos(USERV,histor,alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
-													billy.print(">>> Error.");
+													billy.linea();
+													billy.print("\nError: " + e.getMessage());
 												}
 											break;
 											case 3:
 												// Eliminar
 												try
 												{
-													billy.eliminarAlumnos(alumnos, carne);
+													billy.linea();
+													billy.eliminarAlumnos(USERV,histor,alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
-													billy.print(">>> Error.");
+													billy.linea();
+													billy.print("\nError: " + e.getMessage());
 												}
 											break;
 											case 4:
 												// Volver al menú principal
+												billy.linea();
 												billy.print("volviendo al menú princial...");
 												validsub = false;
 											break;
 											default:
+												billy.linea();
 												billy.print("Selección inválida, intentalo de nuevo.");
 												validsub = true;
 											break;
@@ -108,38 +174,46 @@ public class Program
 												// Agregar
 												try
 												{
-													billy.addDocente(docentes, idDocentes);
+													billy.linea();
+													billy.addDocente(USERV,histor,docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
-													billy.print(">>> Error.");
+													billy.linea();
+													billy.print("\nError: " + e.getMessage());
 												}
 											break;
 											case 2:
 												// Modificar
 												try
 												{
-													billy.actualizarDocentes(docentes, idDocentes);
+													billy.linea();
+													billy.actualizarDocentes(USERV,histor,docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
-													billy.print(">>> Error.");
+													billy.linea();
+													billy.print("\nError: " + e.getMessage());
 												}
 											break;
 											case 3:
 												// Eliminar
 												try
 												{
-													billy.eliminarDocentes(docentes, idDocentes);
+													billy.linea();
+													billy.eliminarDocentes(USERV,histor,docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
-													billy.print(">>> Error.");
+													billy.linea();
+													billy.print("\nError: " + e.getMessage());
 												}
 											break;
 											case 4:
 												// Volver al menú principal
+												billy.linea();
 												billy.print("volviendo al menú princial...");
 												validsub = false;
 											break;
 											default:
+												billy.linea();
 												billy.print("Selección inválida, intentalo de nuevo.");
 												validsub = true;
 											break;
@@ -147,83 +221,138 @@ public class Program
 									}
 							break;
 							case 3:
-								while(validsub)
+								do
+								{
+									// Administrar Cursos
+									billy.subMenuCursos();
+									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
+									switch(subOpcion)
 									{
-										// Administrar Cursos
-										billy.subMenu();
-										int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
-										switch(subOpcion)
-										{
-											case 1:
-												// Agregar
-												try
-												{
-													salir = billy.salir();
-												}catch(Exception e)
-												{
-													billy.print(">>> Error.");
-												}
-											break;
-											case 2:
-												// Modificar
-												try
-												{
-													salir = billy.salir();
-												}catch(Exception e)
-												{
-													billy.print(">>> Error.");
-												}
-											break;
-											case 3:
-												// Eliminar
-												try
-												{
-													salir = billy.salir();
-												}catch(Exception e)
-												{
-													billy.print(">>> Error.");
-												}
-											break;
-											case 4:
+										case 1:
+											// Agregar
+											try
+											{
+												billy.linea();
+												billy.addCursos(USERV,histor,cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 2:
+											// Modificar
+											try
+											{
+												billy.linea();
+												billy.actualizarCursos(USERV,histor,cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 3:
+											// Eliminar
+											try
+											{
+												billy.linea();
+												billy.eliminarCursos(USERV,histor,cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 4:
+											try
+											{
+												billy.linea();
+												billy.asignarCursos(cursos, idCursos, alumnos, carne, docentes, idDocentes, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
+											}catch(Exception e)
+											{
+												billy.print("\n\t\tERROR: " + e.getMessage());
+											}
+										break;
+										case 5:
+											// Volver al menú principal
+											billy.linea();
+											billy.print("volviendo al menú princial...");
+											validsub = false;
+										break;
+										default:
+											billy.linea();
+											billy.print("Selección inválida, intentalo de nuevo.");
+											validsub = true;
+										break;
+									}
+								}while(validsub);
+							break;
+							// PAGOS
+							case 4:
+								do
+								{
+									billy.linea();
+									billy.subMenuPagos();
+									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
+									switch(subOpcion)
+									{
+										case 1:
+											// Realizar un pago
+											try
+											{
+												billy.linea();
+												billy.addPagos(USERV,histor,pagos, alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+											}catch(Exception e)
+											{
+												billy.linea();
+												billy.print("\nError: " + e.getMessage());
+											}
+										break;
+										case 2:
+											try
+											{
+												billy.mostrarPagos(pagos, alumnos, carne, trimestre);
+											}catch(Exception e)
+											{
+												billy.print("ERROR: " + e.getMessage());
+											}
+										break;
+										case 3:
+											try
+											{
 												// Volver al menú principal
+												billy.linea();
 												billy.print("volviendo al menú princial...");
 												validsub = false;
-											break;
-											default:
-												billy.print("Selección inválida, intentalo de nuevo.");
-												validsub = true;
-											break;
-										}
+											}catch(Exception e)
+											{
+												billy.print("\n\tError: " + e.getMessage());
+											}
+										break;
+										default:
+											billy.linea();
+											billy.print("Selección inválida, intentalo de nuevo.");
+											validsub = true;
+										break;
 									}
-							break;
-							case 4:
-								// Realizar un pago
-								try
-								{
-									while(salir)
-									{
-									salir = billy.salir();
-									}
-								}catch(Exception e)
-								{
-									billy.print(">>> Error.");
-								}
+								}while(validsub);
 							break;
 							case 5:
 								// Ingreso de Notas
-								billy.print("\n\t\t\t\tIngreso de Notas.");
-								nota1 = Float.parseFloat(billy.getInput("\n\n\tActividad 1:\t\t\t"));
-								nota2 = Float.parseFloat(billy.getInput("\n\tActividad 2:\t\t\t"));
-								nota3 = Float.parseFloat(billy.getInput("\n\tActividad 3:\t\t\t"));
-								nota4 = Float.parseFloat(billy.getInput("\n\tActividad 4:\t\t\t"));
-								nota5 = Float.parseFloat(billy.getInput("\n\tActividad 5:\t\t\t"));
-								nota6 = Float.parseFloat(billy.getInput("\n\tActividad 6:\t\t\t"));
-								parcial = Float.parseFloat(billy.getInput("\n\tExamen Parcial:\t\t\t"));
-								proyecto = Float.parseFloat(billy.getInput("\n\tProyecto:\t\t\t"));
-								examenFinal = Float.parseFloat(billy.getInput("\n\tExamen Final:\t\t\t"));
+								billy.linea();
+								billy.addNotas(USERV,histor,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);				
 							break;
 							case 6:
+								billy.historialMostrar(histor);
 								// Resultados Finales
+								try
+								{
+
+								}catch(Exception e)
+								{
+									billy.print("\n\tERROR: " + e.getMessage());
+								}
 							break;
 							case 7:
 								// SALIR
@@ -243,11 +372,11 @@ public class Program
 					billy.print("\nIntenta de nuevo.");
 				}
 				
-			}
+			}while(flag && contador < 3);
 		}
 		catch(Exception e)
 		{
-			billy.print(">>>>>> ERROR");
+			billy.print("\nError: " + e.getMessage());
 		}
 	}
 	// Comit Oct 19
