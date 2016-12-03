@@ -45,15 +45,53 @@ public class Program
 					ArrayList<Integer> idCursos = new ArrayList<Integer>();
 					ArrayList<Integer> pagos = new ArrayList<Integer>();
 					ArrayList<Integer> trimestre = new ArrayList<Integer>();
-					ArrayList<Float> nota1 = new ArrayList<Float>();
-					ArrayList<Float> nota2 = new ArrayList<Float>();
-					ArrayList<Float> nota3 = new ArrayList<Float>();
-					ArrayList<Float> nota4 = new ArrayList<Float>();
-					ArrayList<Float> nota5 = new ArrayList<Float>();
-					ArrayList<Float> nota6 = new ArrayList<Float>();
-					ArrayList<Float> parcial = new ArrayList<Float>();
-					ArrayList<Float> proyecto = new ArrayList<Float>();
-					ArrayList<Float> examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso1nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso1nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso1parcial = new ArrayList<Float>();
+					ArrayList<Float> curso1proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso1examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso2nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso2nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso2parcial = new ArrayList<Float>();
+					ArrayList<Float> curso2proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso2examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso3nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso3nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso3parcial = new ArrayList<Float>();
+					ArrayList<Float> curso3proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso3examenFinal = new ArrayList<Float>();
+
+					ArrayList<Float> curso4nota1 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota2 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota3 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota4 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota5 = new ArrayList<Float>();
+					ArrayList<Float> curso4nota6 = new ArrayList<Float>();
+					ArrayList<Float> curso4parcial = new ArrayList<Float>();
+					ArrayList<Float> curso4proyecto = new ArrayList<Float>();
+					ArrayList<Float> curso4examenFinal = new ArrayList<Float>();
+
+					ArrayList<Integer> alumnoCurso = new ArrayList<Integer>();
+					ArrayList<Integer> docenteCurso = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso1 = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso2 = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso3 = new ArrayList<Integer>();
+					ArrayList<Integer> alumnoCurso4 = new ArrayList<Integer>();
 					// Validacion para salida
 					//Menu Principal
 					while(valid)
@@ -78,7 +116,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													numCarne = billy.addAlumno(alumnos, carne, numCarne, pagos, trimestre, nota1, nota2, nota3, nota4, nota5, nota6, parcial, proyecto, examenFinal);
+													numCarne = billy.addAlumno(alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -90,7 +128,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.actualizarAlumnos(alumnos, carne);
+													billy.actualizarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -102,7 +140,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.eliminarAlumnos(alumnos, carne);
+													billy.eliminarAlumnos(alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -136,7 +174,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.addDocente(docentes, idDocentes);
+													billy.addDocente(docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -148,7 +186,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.actualizarDocentes(docentes, idDocentes);
+													billy.actualizarDocentes(docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -160,7 +198,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.eliminarDocentes(docentes, idDocentes);
+													billy.eliminarDocentes(docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -185,7 +223,7 @@ public class Program
 								do
 								{
 									// Administrar Cursos
-									billy.subMenu();
+									billy.subMenuCursos();
 									int subOpcion = Integer.parseInt(billy.getInput("\n\n\tIngresa la opcion: "));
 									switch(subOpcion)
 									{
@@ -205,7 +243,7 @@ public class Program
 											// Modificar
 											try
 											{
-											billy.linea();
+												billy.linea();
 												billy.actualizarCursos(cursos, idCursos);
 											}catch(Exception e)
 											{
@@ -226,6 +264,16 @@ public class Program
 											}
 										break;
 										case 4:
+											try
+											{
+												billy.linea();
+												billy.asignarCursos(cursos, idCursos, alumnos, carne, docentes, idDocentes, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
+											}catch(Exception e)
+											{
+												billy.print("\n\t\tERROR: " + e.getMessage());
+											}
+										break;
+										case 5:
 											// Volver al menú principal
 											billy.linea();
 											billy.print("volviendo al menú princial...");
@@ -253,7 +301,7 @@ public class Program
 											try
 											{
 												billy.linea();
-												billy.addPagos(pagos, alumnos, carne, trimestre);
+												billy.addPagos(pagos, alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 											}catch(Exception e)
 											{
 												billy.linea();
@@ -292,10 +340,17 @@ public class Program
 							case 5:
 								// Ingreso de Notas
 								billy.linea();
-								billy.addNotas(nota1, nota2, nota3, nota4, nota5, nota6, parcial, proyecto, examenFinal, alumnos, carne);				
+								billy.addNotas(curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);				
 							break;
 							case 6:
 								// Resultados Finales
+								try
+								{
+
+								}catch(Exception e)
+								{
+									billy.print("\n\tERROR: " + e.getMessage());
+								}
 							break;
 							case 7:
 								// SALIR
