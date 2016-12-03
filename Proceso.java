@@ -106,7 +106,7 @@ public class Proceso
 		return valSalir;
 	}
 	// Metodos Agregar
-	public static int addAlumno(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4)
+	public static int addAlumno(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<Float> finalesCurso1, ArrayList<Float> finalesCurso2, ArrayList<Float> finalesCurso3, ArrayList<Float> finalesCurso4)
 	{
 		String nombre;
 		int posicion = 0;
@@ -167,6 +167,12 @@ public class Proceso
 				alumnoCurso2.add(0);
 				alumnoCurso3.add(0);
 				alumnoCurso4.add(0);
+
+				finalesCurso1.add(inicio);
+				finalesCurso2.add(inicio);
+				finalesCurso3.add(inicio);
+				finalesCurso4.add(inicio);
+
 				posicion++;
 				numCarne = numCarne + 1;
 
@@ -247,7 +253,7 @@ public class Proceso
 		{		
 			do
 			{
-				mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+				mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 				numPago = Integer.parseInt(getInput("\n\n\tIngresa el carné del alumno que realizará el pago: "));
 				int pos = carne.indexOf(numPago);
 				String nombrePago = alumnos.get(pos);
@@ -336,7 +342,7 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void addNotas(String usuario,ArrayList<String> histo,ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void addNotas(String usuario,ArrayList<String> histo, ArrayList<Integer> trimestre,ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<Float> finalesCurso1, ArrayList<Float> finalesCurso2, ArrayList<Float> finalesCurso3, ArrayList<Float> finalesCurso4)
 	{
 		boolean valSalir = true;
 		float n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0, n6 = 0, par = 0, pro = 0, exF = 0;
@@ -344,77 +350,82 @@ public class Proceso
 		{
 			do
 			{
-				mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+				mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 				int numCarne = Integer.parseInt(getInput("\nIngresa el numero de Carné del alumno que se calificará: "));
 				int pos = carne.indexOf(numCarne);
 				String nombre = alumnos.get(pos);
+					int nC1 = alumnoCurso1.get(pos);
+						int idCrurso1 = idCursos.indexOf(nC1);
+						String nomCurso1 = cursos.get(idCrurso1);
+					int nC2 = alumnoCurso2.get(pos);
+						int idCrurso2 = idCursos.indexOf(nC2);
+						String nomCurso2 = cursos.get(idCrurso2);
+					int nC3 = alumnoCurso3.get(pos);
+						int idCrurso3 = idCursos.indexOf(nC3);
+						String nomCurso3 = cursos.get(idCrurso3);
+					int nC4 = alumnoCurso4.get(pos);
+						int idCrurso4 = idCursos.indexOf(nC4);
+						String nomCurso4 = cursos.get(idCrurso4);
 
-				int nCurso1 = alumnoCurso1.get(pos);
-					int codCurso1 = idCursos.indexOf(nCurso1);
-					String nomCurso1 = cursos.get(codCurso1);
+					int solvencia = trimestre.get(pos);
 
-				int nCurso2 = alumnoCurso2.get(pos);
-					int codCurso2 = idCursos.indexOf(nCurso2);
-					String nomCurso2 = cursos.get(codCurso2);
-
-				int nCurso3 = alumnoCurso3.get(pos);
-					int codCurso3 = idCursos.indexOf(nCurso3);
-					String nomCurso3 = cursos.get(codCurso3);
-
-				int nCurso4 = alumnoCurso4.get(pos);
-					int codCurso4 = idCursos.indexOf(nCurso4);
-					String nomCurso4 = cursos.get(codCurso4);
-
-				int opcion = Integer.parseInt(getInput("\n\tSelecciona el curso al cual quieres calificar: \n\t\t1.- " + nomCurso1 + "\n\t\t2.- " + nomCurso2 + "\n\t\t3.- " + nomCurso3 + "\n\t\t4.- " + nomCurso4 + "\n\t\t5.- SALIR"));
-
-				switch(opcion)
+				if(solvencia != 0)
 				{
-					case 1:
-					//------------------------------------Curso 1------------------------------------------------------------------
-						if(curso1nota1.get(pos) > 0 && curso1nota2.get(pos) > 0 && curso1nota3.get(pos) > 0 && curso1nota4.get(pos) > 0 && curso1nota5.get(pos) > 0 && curso1nota6.get(pos) > 0 && curso1parcial.get(pos) > 0 && curso1proyecto.get(pos) > 0 && curso1examenFinal.get(pos) > 0)
-						{
-							print("\n\t\t\tEl alumno ya ha sido calificado.");
-						}else
-						{
+					mostrarCursos(cursos, idCursos);
 
-							n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
-							curso1nota1.add(pos, n1);
+					int opcion = Integer.parseInt(getInput("\n\tSelecciona el curso al cual quieres calificar:\n\t\t1.- " + nomCurso1 + "\n\t\t2.- " + nomCurso2 + "\n\t\t3.- " + nomCurso3 + "\n\t\t4.- " + nomCurso4 + "\n\t\tOpción: "));
 
-							if(n1 <= 5)
+					switch(opcion)
+					{
+						case 1:
+						//------------------------------------Curso 1------------------------------------------------------------------
+							if(curso1nota1.get(pos) > 0 && curso1nota2.get(pos) > 0 && curso1nota3.get(pos) > 0 && curso1nota4.get(pos) > 0 && curso1nota5.get(pos) > 0 && curso1nota6.get(pos) > 0 && curso1parcial.get(pos) > 0 && curso1proyecto.get(pos) > 0 && curso1examenFinal.get(pos) > 0)
 							{
-								n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
-								curso1nota2.add(pos, n2);
-								if(n2 <= 5)
+								print("\n\t\t\tEl alumno ya ha sido calificado.");
+							}else
+							{
+
+								n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
+								curso1nota1.add(pos, n1);
+
+								if(n1 <= 5)
 								{
-									n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
-									curso1nota3.add(pos, n3);
-									if(n3 <= 5)
+									n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
+									curso1nota2.add(pos, n2);
+									if(n2 <= 5)
 									{
-										n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
-										curso1nota4.add(pos, n4);
-										if(n4 <= 5)
+										n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
+										curso1nota3.add(pos, n3);
+										if(n3 <= 5)
 										{
-											n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
-											curso1nota5.add(pos, n5);
-											if(n5 <= 5)
+											n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
+											curso1nota4.add(pos, n4);
+											if(n4 <= 5)
 											{
-												n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
-												curso1nota6.add(pos, n6);
-												if(n6 <= 5)
+												n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
+												curso1nota5.add(pos, n5);
+												if(n5 <= 5)
 												{
-													par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
-													curso1parcial.add(pos, par);
-													if(par <= 10)
+													n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
+													curso1nota6.add(pos, n6);
+													if(n6 <= 5)
 													{
-														pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
-														curso1proyecto.add(pos, pro);
-														if(pro <= 20)
+														par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
+														curso1parcial.add(pos, par);
+														if(par <= 10)
 														{
-															exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
-															curso1examenFinal.add(pos, exF);
-															if(exF <= 40)
+															pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
+															curso1proyecto.add(pos, pro);
+															if(pro <= 20)
 															{
-																print("\n\t\tSe han ingresado las notas correntamente.");
+																exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
+																curso1examenFinal.add(pos, exF);
+																if(exF <= 40)
+																{
+																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
+																	finalesCurso1.add(pos, suma);
+																	print("\n\t\tSe han ingresado las notas correntamente.");
+																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
 														}else{	print("La nota excede el rango establecido");	}
 													}else{	print("La nota excede el rango establecido");	}
@@ -423,56 +434,58 @@ public class Proceso
 										}else{	print("La nota excede el rango establecido");	}
 									}else{	print("La nota excede el rango establecido");	}
 								}else{	print("La nota excede el rango establecido");	}
-							}else{	print("La nota excede el rango establecido");	}
-						}
-					//-------------------------------------------------------------------------------------------------------------
-					break;
-					case 2:
-					//------------------------------------Curso 2------------------------------------------------------------------
-					if(curso2nota1.get(pos) > 0 && curso2nota2.get(pos) > 0 && curso2nota3.get(pos) > 0 && curso2nota4.get(pos) > 0 && curso2nota5.get(pos) > 0 && curso2nota6.get(pos) > 0 && curso2parcial.get(pos) > 0 && curso2proyecto.get(pos) > 0 && curso2examenFinal.get(pos) > 0)
-						{
-							print("\n\t\t\tEl alumno ya ha sido calificado.");
-						}else
-						{
-
-							n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
-							curso2nota1.add(pos, n1);
-
-							if(n1 <= 5)
+							}
+						//-------------------------------------------------------------------------------------------------------------
+						break;
+						case 2:
+						//------------------------------------Curso 2------------------------------------------------------------------
+						if(curso2nota1.get(pos) > 0 && curso2nota2.get(pos) > 0 && curso2nota3.get(pos) > 0 && curso2nota4.get(pos) > 0 && curso2nota5.get(pos) > 0 && curso2nota6.get(pos) > 0 && curso2parcial.get(pos) > 0 && curso2proyecto.get(pos) > 0 && curso2examenFinal.get(pos) > 0)
 							{
-								n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
-								curso2nota2.add(pos, n2);
-								if(n2 <= 5)
+								print("\n\t\t\tEl alumno ya ha sido calificado.");
+							}else
+							{
+
+								n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
+								curso2nota1.add(pos, n1);
+
+								if(n1 <= 5)
 								{
-									n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
-									curso2nota3.add(pos, n3);
-									if(n3 <= 5)
+									n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
+									curso2nota2.add(pos, n2);
+									if(n2 <= 5)
 									{
-										n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
-										curso2nota4.add(pos, n4);
-										if(n4 <= 5)
+										n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
+										curso2nota3.add(pos, n3);
+										if(n3 <= 5)
 										{
-											n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
-											curso2nota5.add(pos, n5);
-											if(n5 <= 5)
+											n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
+											curso2nota4.add(pos, n4);
+											if(n4 <= 5)
 											{
-												n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
-												curso2nota6.add(pos, n6);
-												if(n6 <= 5)
+												n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
+												curso2nota5.add(pos, n5);
+												if(n5 <= 5)
 												{
-													par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
-													curso2parcial.add(pos, par);
-													if(par <= 10)
+													n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
+													curso2nota6.add(pos, n6);
+													if(n6 <= 5)
 													{
-														pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
-														curso2proyecto.add(pos, pro);
-														if(pro <= 20)
+														par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
+														curso2parcial.add(pos, par);
+														if(par <= 10)
 														{
-															exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
-															curso2examenFinal.add(pos, exF);
-															if(exF <= 40)
+															pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
+															curso2proyecto.add(pos, pro);
+															if(pro <= 20)
 															{
-																print("\n\t\tSe han ingresado las notas correntamente.");
+																exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
+																curso2examenFinal.add(pos, exF);
+																if(exF <= 40)
+																{
+																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
+																	finalesCurso2.add(pos, suma);
+																	print("\n\t\tSe han ingresado las notas correntamente.");
+																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
 														}else{	print("La nota excede el rango establecido");	}
 													}else{	print("La nota excede el rango establecido");	}
@@ -481,56 +494,58 @@ public class Proceso
 										}else{	print("La nota excede el rango establecido");	}
 									}else{	print("La nota excede el rango establecido");	}
 								}else{	print("La nota excede el rango establecido");	}
-							}else{	print("La nota excede el rango establecido");	}
-						}
-					//-------------------------------------------------------------------------------------------------------------
-					break;
-					case 3:
-					//-------------------------------------Curso 3-----------------------------------------------------------------
-					if(curso3nota1.get(pos) > 0 && curso3nota2.get(pos) > 0 && curso3nota3.get(pos) > 0 && curso3nota4.get(pos) > 0 && curso3nota5.get(pos) > 0 && curso3nota6.get(pos) > 0 && curso3parcial.get(pos) > 0 && curso3proyecto.get(pos) > 0 && curso3examenFinal.get(pos) > 0)
-						{
-							print("\n\t\t\tEl alumno ya ha sido calificado.");
-						}else
-						{
-
-							n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
-							curso3nota1.add(pos, n1);
-
-							if(n1 <= 5)
+							}
+						//-------------------------------------------------------------------------------------------------------------
+						break;
+						case 3:
+						//-------------------------------------Curso 3-----------------------------------------------------------------
+						if(curso3nota1.get(pos) > 0 && curso3nota2.get(pos) > 0 && curso3nota3.get(pos) > 0 && curso3nota4.get(pos) > 0 && curso3nota5.get(pos) > 0 && curso3nota6.get(pos) > 0 && curso3parcial.get(pos) > 0 && curso3proyecto.get(pos) > 0 && curso3examenFinal.get(pos) > 0)
 							{
-								n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
-								curso3nota2.add(pos, n2);
-								if(n2 <= 5)
+								print("\n\t\t\tEl alumno ya ha sido calificado.");
+							}else
+							{
+
+								n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
+								curso3nota1.add(pos, n1);
+
+								if(n1 <= 5)
 								{
-									n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
-									curso3nota3.add(pos, n3);
-									if(n3 <= 5)
+									n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
+									curso3nota2.add(pos, n2);
+									if(n2 <= 5)
 									{
-										n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
-										curso3nota4.add(pos, n4);
-										if(n4 <= 5)
+										n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
+										curso3nota3.add(pos, n3);
+										if(n3 <= 5)
 										{
-											n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
-											curso3nota5.add(pos, n5);
-											if(n5 <= 5)
+											n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
+											curso3nota4.add(pos, n4);
+											if(n4 <= 5)
 											{
-												n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
-												curso3nota6.add(pos, n6);
-												if(n6 <= 5)
+												n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
+												curso3nota5.add(pos, n5);
+												if(n5 <= 5)
 												{
-													par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
-													curso3parcial.add(pos, par);
-													if(par <= 10)
+													n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
+													curso3nota6.add(pos, n6);
+													if(n6 <= 5)
 													{
-														pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
-														curso3proyecto.add(pos, pro);
-														if(pro <= 20)
+														par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
+														curso3parcial.add(pos, par);
+														if(par <= 10)
 														{
-															exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
-															curso3examenFinal.add(pos, exF);
-															if(exF <= 40)
+															pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
+															curso3proyecto.add(pos, pro);
+															if(pro <= 20)
 															{
-																print("\n\t\tSe han ingresado las notas correntamente.");
+																exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
+																curso3examenFinal.add(pos, exF);
+																if(exF <= 40)
+																{
+																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
+																	finalesCurso3.add(pos, suma);
+																	print("\n\t\tSe han ingresado las notas correntamente.");
+																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
 														}else{	print("La nota excede el rango establecido");	}
 													}else{	print("La nota excede el rango establecido");	}
@@ -539,56 +554,58 @@ public class Proceso
 										}else{	print("La nota excede el rango establecido");	}
 									}else{	print("La nota excede el rango establecido");	}
 								}else{	print("La nota excede el rango establecido");	}
-							}else{	print("La nota excede el rango establecido");	}
-						}
-					//-------------------------------------------------------------------------------------------------------------
-					break;
-					case 4:
-					//---------------------------------------Curso 4---------------------------------------------------------------
-					if(curso4nota1.get(pos) > 0 && curso4nota2.get(pos) > 0 && curso4nota3.get(pos) > 0 && curso4nota4.get(pos) > 0 && curso4nota5.get(pos) > 0 && curso4nota6.get(pos) > 0 && curso4parcial.get(pos) > 0 && curso4proyecto.get(pos) > 0 && curso4examenFinal.get(pos) > 0)
-						{
-							print("\n\t\t\tEl alumno ya ha sido calificado.");
-						}else
-						{
-
-							n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
-							curso4nota1.add(pos, n1);
-
-							if(n1 <= 5)
+							}
+						//-------------------------------------------------------------------------------------------------------------
+						break;
+						case 4:
+						//---------------------------------------Curso 4---------------------------------------------------------------
+						if(curso4nota1.get(pos) > 0 && curso4nota2.get(pos) > 0 && curso4nota3.get(pos) > 0 && curso4nota4.get(pos) > 0 && curso4nota5.get(pos) > 0 && curso4nota6.get(pos) > 0 && curso4parcial.get(pos) > 0 && curso4proyecto.get(pos) > 0 && curso4examenFinal.get(pos) > 0)
 							{
-								n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
-								curso4nota2.add(pos, n2);
-								if(n2 <= 5)
+								print("\n\t\t\tEl alumno ya ha sido calificado.");
+							}else
+							{
+
+								n1 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 1 (5 pts): "));
+								curso4nota1.add(pos, n1);
+
+								if(n1 <= 5)
 								{
-									n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
-									curso4nota3.add(pos, n3);
-									if(n3 <= 5)
+									n2 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 2 (5 pts): "));
+									curso4nota2.add(pos, n2);
+									if(n2 <= 5)
 									{
-										n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
-										curso4nota4.add(pos, n4);
-										if(n4 <= 5)
+										n3 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 3 (5 pts): "));
+										curso4nota3.add(pos, n3);
+										if(n3 <= 5)
 										{
-											n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
-											curso4nota5.add(pos, n5);
-											if(n5 <= 5)
+											n4 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 4 (5 pts): "));
+											curso4nota4.add(pos, n4);
+											if(n4 <= 5)
 											{
-												n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
-												curso4nota6.add(pos, n6);
-												if(n6 <= 5)
+												n5 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 5 (5 pts): "));
+												curso4nota5.add(pos, n5);
+												if(n5 <= 5)
 												{
-													par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
-													curso4parcial.add(pos, par);
-													if(par <= 10)
+													n6 = Float.parseFloat(getInput("Ingresa la calificacion de la Actividad 6 (5 pts): "));
+													curso4nota6.add(pos, n6);
+													if(n6 <= 5)
 													{
-														pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
-														curso4proyecto.add(pos, pro);
-														if(pro <= 20)
+														par = Float.parseFloat(getInput("Ingresa la calificacion del Examen Parcial (10 pts): "));
+														curso4parcial.add(pos, par);
+														if(par <= 10)
 														{
-															exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
-															curso4examenFinal.add(pos, exF);
-															if(exF <= 40)
+															pro = Float.parseFloat(getInput("Ingresa la calificacion del Proyecto Final (20 pts): "));
+															curso4proyecto.add(pos, pro);
+															if(pro <= 20)
 															{
-																print("\n\t\tSe han ingresado las notas correntamente.");
+																exF = Float.parseFloat(getInput("Ingresa la calificacion del Examen Final (40 pts): "));
+																curso4examenFinal.add(pos, exF);
+																if(exF <= 40)
+																{
+																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
+																	finalesCurso4.add(pos, suma);
+																	print("\n\t\tSe han ingresado las notas correntamente.");
+																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
 														}else{	print("La nota excede el rango establecido");	}
 													}else{	print("La nota excede el rango establecido");	}
@@ -597,20 +614,21 @@ public class Proceso
 										}else{	print("La nota excede el rango establecido");	}
 									}else{	print("La nota excede el rango establecido");	}
 								}else{	print("La nota excede el rango establecido");	}
-							}else{	print("La nota excede el rango establecido");	}
-						}
-					//-------------------------------------------------------------------------------------------------------------
-					break;
-					case 5:
-						print("\n\t\t\tRestornando a menu.");
-						valSalir = false;
-					break;
-					default:
-						print("\n\t\t\tValor inválido intentalo de nuevo.");
-						valSalir = false;
-					break;
-				}
+							}
+						//-------------------------------------------------------------------------------------------------------------
+						break;
+						case 5:
+							print("\n\t\t\tRestornando a menu.");
+							valSalir = false;
+						break;
+						default:
+							print("\n\t\t\tValor inválido intentalo de nuevo.");
+							valSalir = false;
+						break;
+					}
 				historialAddNotas(usuario,alumnos,histo);
+				}else{ print("\n\t\tEl alumno no ha pagado, no es posible asignarse."); }
+
 				valSalir = salir();
 			}while(valSalir);
 		}catch(Exception e)
@@ -619,7 +637,7 @@ public class Proceso
 		}
 	}
 	// Metodos Mostrar
-	public static void mostrarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void mostrarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> trimestre, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
@@ -630,23 +648,17 @@ public class Proceso
 				int numCarne = carne.get(i);
 				String alumno2 = alumnos.get(i);
 
-				/*int codCurso1 = alumnoCurso1.get(i);
-				int puntero1 = idCursos.indexOf(codCurso1);
-				String nombreCurso1 = cursos.get(puntero1);
+				int numTrimestre = trimestre.get(i);
 
-				int codCurso2 = alumnoCurso2.get(i);
-				int puntero2 = idCursos.indexOf(codCurso2);
-				String nombreCurso2 = cursos.get(puntero2);
+				int numCurso1 = alumnoCurso1.get(i);
 
-				int codCurso3 = alumnoCurso3.get(i);
-				int puntero3 = idCursos.indexOf(codCurso3);
-				String nombreCurso3 = cursos.get(puntero3);
+				int numCurso2 = alumnoCurso2.get(i);
 
-				int codCurso4 = alumnoCurso4.get(i);
-				int puntero4 = idCursos.indexOf(codCurso4);
-				String nombreCurso4 = cursos.get(puntero4);*/
+				int numCurso3 = alumnoCurso3.get(i);
 
-				print("\n\t" + alumno2 + "\t\t\t" + numCarne );
+				int numCurso4 = alumnoCurso4.get(i);
+
+				print("\n\t" + alumno2 + "\t\t\t" + numCarne + "\t\t\t" + numTrimestre + "\t\t\t" + numCurso1 + "\t\t\t" + numCurso2 + "\t\t\t" + numCurso3 + "\t\t\t" + numCurso4);
 			}
 		}catch(Exception e)
 		{
@@ -727,14 +739,30 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void mostrarFinales(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal)
+	public static void mostrarFinales(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Float> finalesCurso1, ArrayList<Float> finalesCurso2, ArrayList<Float> finalesCurso3, ArrayList<Float> finalesCurso4)
 	{
 		boolean valSalir = true;
 		try
 		{
+			String nombreCurso = null;
+			int contadorGanados = 0, contadorPerdidos = 0, nota = 0;
 			do
 			{
+				print("\n\t\tResultados por curso: ");
+				print("\n\tCurso\t\t\tGanados\t\t\tPerdidos");
 
+				for(int i = 0; i <= alumnos.size(); i++)
+				{
+					if(nota <= 60)
+					{
+						print("\n\t" + nombreCurso + "\t\t\t" + contadorGanados + "\t\t\t" + contadorPerdidos);
+						contadorPerdidos = contadorPerdidos + 1;
+					}else
+					{
+						contadorPerdidos = contadorPerdidos + 1;
+						print("\n\t" + nombreCurso + "\t\t\t" + contadorGanados + "\t\t\t" + contadorPerdidos);
+					}
+				}
 
 				valSalir = salir();
 			}while(valSalir);
@@ -750,7 +778,7 @@ public class Proceso
     	{
 	    	int num, pos;
 			print("\n\nPor el momento el listado que tenemos está así: ");
-			mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+			mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 			num = Integer.parseInt(getInput("\n\nIngresa el carné del alumno que se dará de baja: "));
 			pos = carne.indexOf(num);
 			historialDeleteAlum(usuario,alumnos,histo,pos);
@@ -805,7 +833,7 @@ public class Proceso
 			alumnoCurso4.remove(pos);
 
 	        print("\n\tEl alumno se ha dado de baja.\n");
-	        mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+	        mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 		}catch(Exception e)
 		{
 			print("\nError: " + e.getMessage());
@@ -853,13 +881,13 @@ public class Proceso
 	    }
 	}
 	// Metodos Actualizar
-	public static void actualizarAlumnos(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void actualizarAlumnos(String usuario,ArrayList<String> histo, ArrayList<Integer> trimestre,ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
 			int num, pos, numCarne;
 			print("\n\n\tPor el momento el listado que tenemos está así: ");
-			mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+			mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 			num = Integer.parseInt(getInput("\n\nIngresa el carné del alumno que quieres actualizar: "));
 			pos = carne.indexOf(num);
 			alumnos.remove(pos);
@@ -867,7 +895,7 @@ public class Proceso
 			alumnos.add(pos, nuevoNombre);
 			
 			print("\n\t\tAlumno con el carné " + num + " se ha actualizado.");
-			mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+			mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 			historialEdit(usuario,alumnos,histo,pos);
 		}catch(Exception e)
 		{
@@ -917,7 +945,7 @@ public class Proceso
 		}
 	}
 	// Metodos para Asignar
-	public static void asignarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4)
+	public static void asignarCursos(ArrayList<Integer> trimestre, ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4)
 	{
 		boolean valSalir = true;
 		int codigoCurso = 0, posCurso = 0;
@@ -926,7 +954,7 @@ public class Proceso
 		{
 			do
 			{
-				mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+				mostrarAlumnos(alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 				int numCarne = Integer.parseInt(getInput("\n\t\tIngresa el numero de carné del alumno que se va a asignar: "));
 				int pos = carne.indexOf(numCarne);
 				String nombreAlumno = alumnos.get(pos);
@@ -1086,6 +1114,4 @@ public class Proceso
 			System.out.println(histo.get(i));
 		}
 	}
-
-
 }

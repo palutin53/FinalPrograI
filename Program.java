@@ -93,7 +93,13 @@ public class Program
 					ArrayList<Integer> alumnoCurso2 = new ArrayList<Integer>();
 					ArrayList<Integer> alumnoCurso3 = new ArrayList<Integer>();
 					ArrayList<Integer> alumnoCurso4 = new ArrayList<Integer>();
-					// Validacion para salida
+
+					ArrayList<Float> finalesCurso1 = new ArrayList<Integer>();
+					ArrayList<Float> finalesCurso2 = new ArrayList<Integer>();
+					ArrayList<Float> finalesCurso3 = new ArrayList<Integer>();
+					ArrayList<Float> finalesCurso4 = new ArrayList<Integer>();
+ 
+ 					// Validacion para salida
 					//Menu Principal
 					while(valid)
 					{
@@ -129,7 +135,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.actualizarAlumnos(USERV,histor,alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+													billy.actualizarAlumnos(USERV,histor, trimestre,alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -268,7 +274,7 @@ public class Program
 											try
 											{
 												billy.linea();
-												billy.asignarCursos(cursos, idCursos, alumnos, carne, docentes, idDocentes, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
+												billy.asignarCursos(trimestre, cursos, idCursos, alumnos, carne, docentes, idDocentes, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
 											}catch(Exception e)
 											{
 												billy.print("\n\t\tERROR: " + e.getMessage());
@@ -341,7 +347,7 @@ public class Program
 							case 5:
 								// Ingreso de Notas
 								billy.linea();
-								billy.addNotas(USERV,histor,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);				
+								billy.addNotas(USERV,histor, trimestre,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos, finalesCurso1, finalesCurso2, finalesCurso3, finalesCurso4);				
 							break;
 							case 6:
 								
@@ -357,9 +363,11 @@ public class Program
 							case 7:
 								try
 								{
+									billy.linea();
 									billy.historialMostrar(histor);
 								}catch(Exception e)
 								{
+									billy.linea();
 									billy.print("\n\tERROR: " + e.getMessage());
 								}
 								
