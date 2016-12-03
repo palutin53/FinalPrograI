@@ -45,6 +45,7 @@ public class Program
 					ArrayList<Integer> idCursos = new ArrayList<Integer>();
 					ArrayList<Integer> pagos = new ArrayList<Integer>();
 					ArrayList<Integer> trimestre = new ArrayList<Integer>();
+					ArrayList<String> histor = new ArrayList<String>();
 
 					ArrayList<Float> curso1nota1 = new ArrayList<Float>();
 					ArrayList<Float> curso1nota2 = new ArrayList<Float>();
@@ -116,7 +117,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													numCarne = billy.addAlumno(alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
+													numCarne = billy.addAlumno(USERV,histor,alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -128,7 +129,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.actualizarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+													billy.actualizarAlumnos(USERV,histor,alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -140,7 +141,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.eliminarAlumnos(alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+													billy.eliminarAlumnos(USERV,histor,alumnos, carne, numCarne, pagos, trimestre, curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -174,7 +175,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.addDocente(docentes, idDocentes, docenteCurso, cursos, idCursos);
+													billy.addDocente(USERV,histor,docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -186,7 +187,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.actualizarDocentes(docentes, idDocentes, docenteCurso, cursos, idCursos);
+													billy.actualizarDocentes(USERV,histor,docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -198,7 +199,7 @@ public class Program
 												try
 												{
 													billy.linea();
-													billy.eliminarDocentes(docentes, idDocentes, docenteCurso, cursos, idCursos);
+													billy.eliminarDocentes(USERV,histor,docentes, idDocentes, docenteCurso, cursos, idCursos);
 												}catch(Exception e)
 												{
 													billy.linea();
@@ -232,7 +233,7 @@ public class Program
 											try
 											{
 												billy.linea();
-												billy.addCursos(cursos, idCursos);
+												billy.addCursos(USERV,histor,cursos, idCursos);
 											}catch(Exception e)
 											{
 												billy.linea();
@@ -244,7 +245,7 @@ public class Program
 											try
 											{
 												billy.linea();
-												billy.actualizarCursos(cursos, idCursos);
+												billy.actualizarCursos(USERV,histor,cursos, idCursos);
 											}catch(Exception e)
 											{
 												billy.linea();
@@ -256,7 +257,7 @@ public class Program
 											try
 											{
 												billy.linea();
-												billy.eliminarCursos(cursos, idCursos);
+												billy.eliminarCursos(USERV,histor,cursos, idCursos);
 											}catch(Exception e)
 											{
 												billy.linea();
@@ -301,7 +302,7 @@ public class Program
 											try
 											{
 												billy.linea();
-												billy.addPagos(pagos, alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+												billy.addPagos(USERV,histor,pagos, alumnos, carne, trimestre, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 											}catch(Exception e)
 											{
 												billy.linea();
@@ -340,9 +341,10 @@ public class Program
 							case 5:
 								// Ingreso de Notas
 								billy.linea();
-								billy.addNotas(curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);				
+								billy.addNotas(USERV,histor,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);				
 							break;
 							case 6:
+								
 								// Resultados Finales
 								try
 								{
@@ -353,6 +355,16 @@ public class Program
 								}
 							break;
 							case 7:
+								try
+								{
+									billy.historialMostrar(histor);
+								}catch(Exception e)
+								{
+									billy.print("\n\tERROR: " + e.getMessage());
+								}
+								
+							break;
+							case 8:
 								// SALIR
 								billy.print("\n\n\t\t\tPresiona enter para salir del programa.");
 								//valid = false;

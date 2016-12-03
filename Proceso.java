@@ -10,9 +10,17 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.io.Console;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Proceso
 {
+	public static int historial=-1;
+	public static int historialdoc=-1;
+	public static int historialcur=-1;
+	public static int historialnot=-1;
+	public static int historialPag=-1;
+
 	public static String getInput(String prompt)
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,7 +42,7 @@ public class Proceso
 		{
 			print("\n\t\t\tBinenvenido a UDEO");
 			print("\n\n\tIngresa el valor según la opcion que selecciones.");
-			print("\n\n\t\t1.- Administrar Alumnos\n\t\t2.- Administrar Docentes\n\t\t3.- Administrar Cursos\n\t\t4.- Realizar Pago\n\t\t5.- Ingresar Notas\n\t\t6.- Ver Resultados Finales.\n\t\t7.- SALIR");
+			print("\n\n\t\t1.- Administrar Alumnos\n\t\t2.- Administrar Docentes\n\t\t3.- Administrar Cursos\n\t\t4.- Realizar Pago\n\t\t5.- Ingresar Notas\n\t\t6.- Ver Resultados Finales.\n\t\t7.- Mostrar Historial\n\t\t8.- Salir");
 		}catch(Exception e){
 			print("\nError: " + e.getMessage());
 		}
@@ -98,7 +106,7 @@ public class Proceso
 		return valSalir;
 	}
 	// Metodos Agregar
-	public static int addAlumno(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4)
+	public static int addAlumno(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4)
 	{
 		String nombre;
 		int posicion = 0;
@@ -161,6 +169,8 @@ public class Proceso
 				alumnoCurso4.add(0);
 				posicion++;
 				numCarne = numCarne + 1;
+
+				historialAdd(usuario,alumnos,histo);
 				
 				valSalir = salir();
 
@@ -172,7 +182,7 @@ public class Proceso
 		}
 		return numCarne;
 	}
-	public static void addDocente(ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> docenteCurso, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void addDocente(String usuario,ArrayList<String> histo,ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> docenteCurso, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		String nombre;
 		int posicion = 0, numDocente = 1001;
@@ -192,7 +202,7 @@ public class Proceso
 				docenteCurso.add(numCurso);
 				posicion++;
 				numDocente++;
-				
+				historialAddDocentes(usuario,docentes,histo);
 				valSalir = salir();
 
 			}while(valSalir);
@@ -202,7 +212,7 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void addCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void addCursos(String usuario,ArrayList<String> histo,ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		String nombre;
 		int posicion = 0, numCurso = 101;
@@ -216,7 +226,7 @@ public class Proceso
 				idCursos.add(numCurso);
 				posicion++;
 				numCurso++;
-				
+				historialAddCursos(usuario,cursos,histo);
 				valSalir = salir();
 
 			}while(valSalir);
@@ -226,7 +236,7 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void addPagos(ArrayList<Integer> pagos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> trimestre, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void addPagos(String usuario,ArrayList<String> histo,ArrayList<Integer> pagos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> trimestre, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		boolean valSalir = true;
@@ -318,7 +328,7 @@ public class Proceso
 						}
 					
 				//mostrarPagos(pagos, idPagos, alumnos, carne);
-				
+				historialAddPagos(usuario,alumnos,histo);
 				valSalir = salir();
 			}while(valSalir);
 		}catch(Exception e)
@@ -326,7 +336,7 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void addNotas(ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void addNotas(String usuario,ArrayList<String> histo,ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		boolean valSalir = true;
 		float n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0, n6 = 0, par = 0, pro = 0, exF = 0;
@@ -600,7 +610,7 @@ public class Proceso
 						valSalir = false;
 					break;
 				}
-				
+				historialAddNotas(usuario,alumnos,histo);
 				valSalir = salir();
 			}while(valSalir);
 		}catch(Exception e)
@@ -614,13 +624,13 @@ public class Proceso
 		try
 		{
 			print("\n\tNombre\t\t\tCarné\t\t\tTrimestre\t\t\tCurso 1\t\t\tCurso 2\t\t\tCurso 3\t\t\tCurso 4");
-			int size = alumnos.size();
-			for(int i = 0; i < size; i++)
+			
+			for(int i = 0; i < alumnos.size(); i++)
 			{
 				int numCarne = carne.get(i);
 				String alumno2 = alumnos.get(i);
 
-				int codCurso1 = alumnoCurso1.get(i);
+				/*int codCurso1 = alumnoCurso1.get(i);
 				int puntero1 = idCursos.indexOf(codCurso1);
 				String nombreCurso1 = cursos.get(puntero1);
 
@@ -634,9 +644,9 @@ public class Proceso
 
 				int codCurso4 = alumnoCurso4.get(i);
 				int puntero4 = idCursos.indexOf(codCurso4);
-				String nombreCurso4 = cursos.get(puntero4);
+				String nombreCurso4 = cursos.get(puntero4);*/
 
-				print("\n\t" + alumno2 + "\t\t\t" + numCarne + "\t\t\t" + nombreCurso1 + "\t\t\t" + nombreCurso2 + "\t\t\t" + nombreCurso3 + "\t\t\t" + nombreCurso4);
+				print("\n\t" + alumno2 + "\t\t\t" + numCarne );
 			}
 		}catch(Exception e)
 		{
@@ -681,16 +691,15 @@ public class Proceso
 		{
 			print("\nError: " + e.getMessage());
 		}
-	}
+	}	
 	public static void mostrarPagos(ArrayList<Integer> pagos, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> trimestre)
 	{
 		boolean valSalir = true;
 		try
 		{
 			print("\n\tNombre\t\t\tCarné\t\t\t\tTrimestre");
-			int pos = pagos.size();
-			int size = pos;
-				for(int i = 0; i < size; i++)
+		
+				for(int i = 0; i < alumnos.size(); i++)
 				{
 					String nombre = alumnos.get(i);
 					int numCarne = carne.get(i);
@@ -735,7 +744,7 @@ public class Proceso
 		}
 	}
 	// Metodos Eliminar
-	public static void eliminarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void eliminarAlumnos(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, int numCarne, ArrayList<Integer> pagos, ArrayList<Integer> trimestre, ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
     {
     	try
     	{
@@ -744,6 +753,7 @@ public class Proceso
 			mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
 			num = Integer.parseInt(getInput("\n\nIngresa el carné del alumno que se dará de baja: "));
 			pos = carne.indexOf(num);
+			historialDeleteAlum(usuario,alumnos,histo,pos);
 			alumnos.remove(pos);
 			carne.remove(pos);
 			pagos.remove(pos);
@@ -801,7 +811,7 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}	        
     }
-	public static void eliminarDocentes(ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> docenteCurso, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void eliminarDocentes(String usuario,ArrayList<String> histo,ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> docenteCurso, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
@@ -810,6 +820,7 @@ public class Proceso
 			mostrarDocentes(docentes, idDocentes, docenteCurso, cursos, idCursos);
 			num = Integer.parseInt(getInput("\n\nIngresa el ID del docente que se dará de baja: "));
 			pos = idDocentes.indexOf(num);
+			historialDeleteDoc(usuario,docentes,histo,pos);
 			docentes.remove(pos);
 			idDocentes.remove(pos);
 			docenteCurso.remove(pos);
@@ -821,7 +832,7 @@ public class Proceso
 	    	print("\nError: " + e.getMessage());
 	    }
 	}
-	public static void eliminarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void eliminarCursos(String usuario,ArrayList<String> histo,ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
@@ -830,6 +841,7 @@ public class Proceso
 			mostrarCursos(cursos, idCursos);
 			num = Integer.parseInt(getInput("\n\nIngresa el ID del curso que se dará de baja: "));
 			pos = idCursos.indexOf(num);
+			historialDeleteCur(usuario,cursos,histo,pos);
 			cursos.remove(pos);
 			idCursos.remove(pos);
 
@@ -841,7 +853,7 @@ public class Proceso
 	    }
 	}
 	// Metodos Actualizar
-	public static void actualizarAlumnos(ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void actualizarAlumnos(String usuario,ArrayList<String> histo,ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
@@ -856,12 +868,13 @@ public class Proceso
 			
 			print("\n\t\tAlumno con el carné " + num + " se ha actualizado.");
 			mostrarAlumnos(alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos);
+			historialEdit(usuario,alumnos,histo,pos);
 		}catch(Exception e)
 		{
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void actualizarDocentes(ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> docenteCurso, ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void actualizarDocentes(String usuario,ArrayList<String> histo,ArrayList<String> docentes, ArrayList<Integer> idDocentes, ArrayList<Integer> docenteCurso, ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
@@ -876,12 +889,13 @@ public class Proceso
 			
 			print("Docente con el ID " + num + " se ha actualizado.");
 			mostrarDocentes(docentes, idDocentes, docenteCurso, cursos, idCursos);
+			historialEdit(usuario,docentes,histo,pos);
 		}catch(Exception e)
 		{
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void actualizarCursos(ArrayList<String> cursos, ArrayList<Integer> idCursos)
+	public static void actualizarCursos(String usuario,ArrayList<String> histo,ArrayList<String> cursos, ArrayList<Integer> idCursos)
 	{
 		try
 		{
@@ -896,6 +910,7 @@ public class Proceso
 			
 			print("Docente con el ID " + num + " se ha actualizado.");
 			mostrarCursos(cursos, idCursos);
+			historialEdit(usuario,cursos,histo,pos);
 		}catch(Exception e)
 		{
 			print("\nError: " + e.getMessage());
@@ -920,7 +935,7 @@ public class Proceso
 				int curso3 = alumnoCurso3.get(pos);
 				int curso4 = alumnoCurso4.get(pos);
 					print("\n\n");
-				if(curso1 > 100)
+				if(curso1 == 0)
 				{
 					mostrarCursos(cursos, idCursos);
 					codigoCurso = Integer.parseInt(getInput("\n\t\tIngresa el ID del curso al cual se va a asignar el alumno: "));
@@ -929,7 +944,7 @@ public class Proceso
 					alumnoCurso1.add(pos, codigoCurso);
 
 					print("El alumno se ha asignado a " + nombreCurso + " con el ID de curso " + codigoCurso + " correctamente.");
-				}else if(curso2 > 100)
+				}else if(curso2 == 0)
 				{
 					mostrarCursos(cursos, idCursos);
 					codigoCurso = Integer.parseInt(getInput("\n\t\tIngresa el ID del curso al cual se va a asignar el alumno: "));
@@ -938,7 +953,7 @@ public class Proceso
 					alumnoCurso2.add(pos, codigoCurso);
 
 					print("El alumno se ha asignado a " + nombreCurso + " con el ID de curso " + codigoCurso + " correctamente.");
-				}else if(curso3 > 100)
+				}else if(curso3 == 0)
 				{
 					mostrarCursos(cursos, idCursos);
 					codigoCurso = Integer.parseInt(getInput("\n\t\tIngresa el ID del curso al cual se va a asignar el alumno: "));
@@ -947,7 +962,7 @@ public class Proceso
 					alumnoCurso3.add(pos, codigoCurso);
 
 					print("El alumno se ha asignado a " + nombreCurso + " con el ID de curso " + codigoCurso + " correctamente.");
-				}else if(curso4 > 100)
+				}else if(curso4 == 0)
 				{
 					mostrarCursos(cursos, idCursos);
 					codigoCurso = Integer.parseInt(getInput("\n\t\tIngresa el ID del curso al cual se va a asignar el alumno: "));
@@ -967,4 +982,110 @@ public class Proceso
 			print("ERROR: " + e.getMessage());
 		}
 	}
+	// LOG AGREGAR -----------------------------------------------------------------------------------------
+	public static void historialAdd(String usuario,ArrayList<String> alumnos,ArrayList<String> histo)
+	{
+		historial=historial + 1;
+		Date myDate = new Date();
+		String alumno2 = alumnos.get(historial);
+		System.out.println("\n\n\t"+usuario+" "+" Agrego en la lista el alumno "+alumno2+" "+myDate);
+		String cadena= usuario+" "+" Agrego en la lista el alumno  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		
+	}
+	public static void historialAddDocentes(String usuario,ArrayList<String> docente,ArrayList<String> histo)
+	{
+		historialdoc=historialdoc + 1;
+		Date myDate = new Date();
+		String alumno2 = docente.get(historialdoc);
+		System.out.println("\n\n\t"+usuario+" "+" Agrego en la lista el docente "+alumno2+" "+myDate);
+		String cadena= usuario+" "+" Agrego en la lista el docente  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		
+	}
+	public static void historialAddCursos(String usuario,ArrayList<String> curso,ArrayList<String> histo)
+	{
+		historialcur=historialcur + 1;
+		Date myDate = new Date();
+		String alumno2 = curso.get(historialcur);
+		System.out.println("\n\n\t"+usuario+" "+" Agrego en la lista el curso "+alumno2+" "+myDate);
+		String cadena= usuario+" "+" Agrego en la lista el curso  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		
+	}
+	public static void historialAddPagos(String usuario,ArrayList<String> pagos,ArrayList<String> histo)
+	{
+		historialPag=historialPag + 1;
+		Date myDate = new Date();
+		String alumno2 = pagos.get(historialPag);
+		System.out.println("\n\n\t"+usuario+" "+" Agrego un pago a "+alumno2+" "+myDate);
+		String cadena= usuario+" "+" Agrego un pago  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		
+	}
+	public static void historialAddNotas(String usuario,ArrayList<String> notas,ArrayList<String> histo)
+	{
+		historialnot=historialnot + 1;
+		Date myDate = new Date();
+		String alumno2 = notas.get(historialnot);
+		System.out.println("\n\n\t"+usuario+" "+" Agrego en la lista notas "+myDate);
+		String cadena= usuario+" "+" Agrego en la lista notas "+myDate;
+		histo.add(cadena);
+		
+	}
+	// LOG EDIT ------------------------------------------------------------------------------------------------------
+	public static void historialEdit(String usuario,ArrayList<String> alumnos,ArrayList<String> histo,int muestra)
+	{
+		//historial=historial + 1;
+		Date myDate = new Date();
+		String alumno2 = alumnos.get(muestra);
+		System.out.println("\n\n\t"+usuario+" "+" Edito en la lista "+alumno2.toString()+" "+myDate);
+		String cadena= usuario+" "+" Edito en la lista  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		
+	}
+	//LOG EDIT -----------------------------------------------------------------------------------------------------
+	public static void historialDeleteAlum(String usuario,ArrayList<String> alumnos,ArrayList<String> histo,int muestra)
+	{
+		//historial=historial + 1;
+		Date myDate = new Date();
+		String alumno2 = alumnos.get(muestra);
+		System.out.println("\n\n\t"+usuario+" "+" Borro en la lista "+alumno2.toString()+" "+myDate);
+		String cadena= usuario+" "+" Borro en la lista  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		historial=historial-1;
+		
+	}
+	public static void historialDeleteDoc(String usuario,ArrayList<String> alumnos,ArrayList<String> histo,int muestra)
+	{
+		//historial=historial + 1;
+		Date myDate = new Date();
+		String alumno2 = alumnos.get(muestra);
+		System.out.println("\n\n\t"+usuario+" "+" Borro en la lista "+alumno2.toString()+" "+myDate);
+		String cadena= usuario+" "+" Borro en la lista  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		historialdoc=historialdoc-1;
+		
+	}
+	public static void historialDeleteCur(String usuario,ArrayList<String> alumnos,ArrayList<String> histo,int muestra)
+	{
+		//historial=historial + 1;
+		Date myDate = new Date();
+		String alumno2 = alumnos.get(muestra);
+		System.out.println("\n\n\t"+usuario+" "+" Borro en la lista "+alumno2.toString()+" "+myDate);
+		String cadena= usuario+" "+" Borro en la lista  "+alumno2.toString()+" "+myDate;
+		histo.add(cadena);
+		historialcur=historialcur-1;
+		
+	}
+
+	public static void historialMostrar(ArrayList<String> histo)
+	{
+		for(int i=0; i< histo.size(); i++)
+		{
+			System.out.println(histo.get(i));
+		}
+	}
+
+
 }
