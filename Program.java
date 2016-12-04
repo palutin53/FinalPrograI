@@ -82,6 +82,7 @@ public class Program
 
 					ArrayList<Integer> alumnoCurso = new ArrayList<Integer>();
 					ArrayList<Integer> docenteCurso = new ArrayList<Integer>();
+
 					ArrayList<Integer> alumnoCurso1 = new ArrayList<Integer>();
 					ArrayList<Integer> alumnoCurso2 = new ArrayList<Integer>();
 					ArrayList<Integer> alumnoCurso3 = new ArrayList<Integer>();
@@ -91,6 +92,16 @@ public class Program
 					ArrayList<Float> finalesCurso2 = new ArrayList<Float>();
 					ArrayList<Float> finalesCurso3 = new ArrayList<Float>();
 					ArrayList<Float> finalesCurso4 = new ArrayList<Float>();
+
+					ArrayList<Integer> ganadosCurso1 = new ArrayList<Integer>();
+					ArrayList<Integer> ganadosCurso2 = new ArrayList<Integer>();
+					ArrayList<Integer> ganadosCurso3 = new ArrayList<Integer>();
+					ArrayList<Integer> ganadosCurso4 = new ArrayList<Integer>();
+
+					ArrayList<Integer> perdidosCurso1 = new ArrayList<Integer>();
+					ArrayList<Integer> perdidosCurso2 = new ArrayList<Integer>();
+					ArrayList<Integer> perdidosCurso3 = new ArrayList<Integer>();
+					ArrayList<Integer> perdidosCurso4 = new ArrayList<Integer>();
  
  					// Validacion para salida
 					//Menu Principal
@@ -340,7 +351,7 @@ public class Program
 							case 5:
 								// Ingreso de Notas
 								billy.linea();
-								billy.addNotas(USERV,histor, trimestre,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos, finalesCurso1, finalesCurso2, finalesCurso3, finalesCurso4);				
+								billy.addNotas(USERV,histor, trimestre,curso1nota1, curso1nota2, curso1nota3, curso1nota4, curso1nota5, curso1nota6, curso1parcial, curso1proyecto, curso1examenFinal, curso2nota1, curso2nota2, curso2nota3, curso2nota4, curso2nota5, curso2nota6, curso2parcial, curso2proyecto, curso2examenFinal, curso3nota1, curso3nota2, curso3nota3, curso3nota4, curso3nota5, curso3nota6, curso3parcial, curso3proyecto, curso3examenFinal, curso4nota1, curso4nota2, curso4nota3, curso4nota4, curso4nota5, curso4nota6, curso4parcial, curso4proyecto, curso4examenFinal, alumnos, carne, alumnoCurso1, alumnoCurso2, alumnoCurso3, alumnoCurso4, cursos, idCursos, finalesCurso1, finalesCurso2, finalesCurso3, finalesCurso4, ganadosCurso1, perdidosCurso1, ganadosCurso2, perdidosCurso2, ganadosCurso3, perdidosCurso3, ganadosCurso4, perdidosCurso4);				
 							break;
 							case 6:
 								

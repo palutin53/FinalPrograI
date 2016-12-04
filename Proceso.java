@@ -353,7 +353,7 @@ public class Proceso
 			print("\nError: " + e.getMessage());
 		}
 	}
-	public static void addNotas(String usuario,ArrayList<String> histo, ArrayList<Integer> trimestre,ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<Float> finalesCurso1, ArrayList<Float> finalesCurso2, ArrayList<Float> finalesCurso3, ArrayList<Float> finalesCurso4)
+	public static void addNotas(String usuario,ArrayList<String> histo, ArrayList<Integer> trimestre,ArrayList<Float> curso1nota1, ArrayList<Float> curso1nota2, ArrayList<Float> curso1nota3, ArrayList<Float> curso1nota4, ArrayList<Float> curso1nota5, ArrayList<Float> curso1nota6, ArrayList<Float> curso1parcial, ArrayList<Float> curso1proyecto, ArrayList<Float> curso1examenFinal, ArrayList<Float> curso2nota1, ArrayList<Float> curso2nota2, ArrayList<Float> curso2nota3, ArrayList<Float> curso2nota4, ArrayList<Float> curso2nota5, ArrayList<Float> curso2nota6, ArrayList<Float> curso2parcial, ArrayList<Float> curso2proyecto, ArrayList<Float> curso2examenFinal, ArrayList<Float> curso3nota1, ArrayList<Float> curso3nota2, ArrayList<Float> curso3nota3, ArrayList<Float> curso3nota4, ArrayList<Float> curso3nota5, ArrayList<Float> curso3nota6, ArrayList<Float> curso3parcial, ArrayList<Float> curso3proyecto, ArrayList<Float> curso3examenFinal, ArrayList<Float> curso4nota1, ArrayList<Float> curso4nota2, ArrayList<Float> curso4nota3, ArrayList<Float> curso4nota4, ArrayList<Float> curso4nota5, ArrayList<Float> curso4nota6, ArrayList<Float> curso4parcial, ArrayList<Float> curso4proyecto, ArrayList<Float> curso4examenFinal, ArrayList<String> alumnos, ArrayList<Integer> carne, ArrayList<Integer> alumnoCurso1, ArrayList<Integer> alumnoCurso2, ArrayList<Integer> alumnoCurso3, ArrayList<Integer> alumnoCurso4, ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<Float> finalesCurso1, ArrayList<Float> finalesCurso2, ArrayList<Float> finalesCurso3, ArrayList<Float> finalesCurso4, ArrayList<Integer> ganadosCurso1, ArrayList<Integer> perdidosCurso1, ArrayList<Integer> ganadosCurso2, ArrayList<Integer> perdidosCurso2, ArrayList<Integer> ganadosCurso3, ArrayList<Integer> perdidosCurso3, ArrayList<Integer> ganadosCurso4, ArrayList<Integer> perdidosCurso4)
 	{
 		boolean valSalir = true;
 		float n1 = 0, n2 = 0, n3 = 0, n4 = 0, n5 = 0, n6 = 0, par = 0, pro = 0, exF = 0;
@@ -435,6 +435,17 @@ public class Proceso
 																{
 																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
 																	finalesCurso1.add(pos, suma);
+																	print("\n\t\tLa nota final es : " + suma);
+																	if(suma <= 60)
+																	{
+																		int temp = perdidosCurso1.get(pos);
+																		temp = temp + 1;
+																		perdidosCurso1.add(pos, temp);
+																	}else{
+																		int temp = ganadosCurso1.get(pos);
+																		temp = temp + 1;
+																		ganadosCurso1.add(pos, temp);
+																	}
 																	print("\n\t\tSe han ingresado las notas correntamente.");
 																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
@@ -495,6 +506,16 @@ public class Proceso
 																{
 																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
 																	finalesCurso2.add(pos, suma);
+																	if(suma <= 60)
+																	{
+																		int temp = perdidosCurso2.get(pos);
+																		temp = temp + 1;
+																		perdidosCurso2.add(pos, temp);
+																	}else{
+																		int temp = ganadosCurso2.get(pos);
+																		temp = temp + 1;
+																		ganadosCurso2.add(pos, temp);
+																	}
 																	print("\n\t\tSe han ingresado las notas correntamente.");
 																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
@@ -555,6 +576,16 @@ public class Proceso
 																{
 																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
 																	finalesCurso3.add(pos, suma);
+																	if(suma <= 60)
+																	{
+																		int temp = perdidosCurso3.get(pos);
+																		temp = temp + 1;
+																		perdidosCurso3.add(pos, temp);
+																	}else{
+																		int temp = ganadosCurso3.get(pos);
+																		temp = temp + 1;
+																		ganadosCurso3.add(pos, temp);
+																	}
 																	print("\n\t\tSe han ingresado las notas correntamente.");
 																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
@@ -615,6 +646,16 @@ public class Proceso
 																{
 																	float suma = n1 + n2 + n3 + n4 + n5 + n6 + par + pro + exF;
 																	finalesCurso4.add(pos, suma);
+																	if(suma <= 60)
+																	{
+																		int temp = perdidosCurso4.get(pos);
+																		temp = temp + 1;
+																		perdidosCurso4.add(pos, temp);
+																	}else{
+																		int temp = ganadosCurso4.get(pos);
+																		temp = temp + 1;
+																		ganadosCurso4.add(pos, temp);
+																	}
 																	print("\n\t\tSe han ingresado las notas correntamente.");
 																}else{	print("La nota excede el rango establecido");	}
 															}else{	print("La nota excede el rango establecido");	}
@@ -709,6 +750,23 @@ public class Proceso
 				int numCurso = idCursos.get(i);
 				String curso2 = cursos.get(i);
 				print("\n\t" + curso2 + "\t\t\t" + numCurso);
+			}
+		}catch(Exception e)
+		{
+			print("\nError: " + e.getMessage());
+		}
+	}
+	public static void mostrarTotales(ArrayList<String> cursos, ArrayList<Integer> idCursos, ArrayList<Integer> ganadosCurso1, ArrayList<Integer> perdidosCurso1, ArrayList<Integer> ganadosCurso2, ArrayList<Integer> perdidosCurso2, ArrayList<Integer> ganadosCurso3, ArrayList<Integer> perdidosCurso3, ArrayList<Integer> ganadosCurso4, ArrayList<Integer> perdidosCurso4)
+	{
+		try
+		{
+			print("\n\tNombre\t\t\tID\t\t\tGanados\t\t\tPerdidos");
+			int size = cursos.size();
+			for(int i = 0; i < size; i++)
+			{
+				int numCurso = idCursos.get(i);
+				String curso2 = cursos.get(i);
+				print("\n\t" + curso2 + "\t\t\t" + numCurso + "\t\t\t" +  + "\t\t\t" + );
 			}
 		}catch(Exception e)
 		{
